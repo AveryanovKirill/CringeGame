@@ -32,5 +32,10 @@ namespace CringeGame
         {
             //mainForm.PanelForm(new Rule1(mainForm));
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -32,31 +32,29 @@ namespace CringeGame
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuForm));
             StartButton = new Button();
             RulesButton = new Button();
             logo = new PictureBox();
+            ExitButton = new Button();
             ((System.ComponentModel.ISupportInitialize)logo).BeginInit();
             SuspendLayout();
             // 
             // StartButton
             // 
-            StartButton.BackColor = SystemColors.Control;
             StartButton.FlatAppearance.BorderSize = 0;
             StartButton.FlatStyle = FlatStyle.Flat;
-            StartButton.ForeColor = SystemColors.Control;
-            //StartButton.Image = Properties.Resources.start__button_default;
             StartButton.Location = new Point(836, 572);
             StartButton.Name = "StartButton";
             StartButton.Size = new Size(260, 100);
             StartButton.TabIndex = 0;
-            StartButton.UseVisualStyleBackColor = false;
+            StartButton.UseVisualStyleBackColor = true;
             StartButton.Click += StartButton_Click;
             // 
             // RulesButton
             // 
             RulesButton.FlatAppearance.BorderSize = 0;
             RulesButton.FlatStyle = FlatStyle.Flat;
-            //RulesButton.Image = Properties.Resources.tutorial__button_default;
             RulesButton.Location = new Point(836, 704);
             RulesButton.Name = "RulesButton";
             RulesButton.Size = new Size(260, 100);
@@ -66,19 +64,31 @@ namespace CringeGame
             // 
             // logo
             // 
-            //logo.Image = Properties.Resources.Group_6;
-            logo.Location = new Point(839, 126);
+            logo.BackgroundImage = (System.Drawing.Image)resources.GetObject("logo.BackgroundImage");
+            logo.Location = new Point(866, 121);
             logo.Name = "logo";
-            logo.Size = new Size(258, 377);
+            logo.Size = new Size(211, 373);
             logo.TabIndex = 2;
             logo.TabStop = false;
+            // 
+            // ExitButton
+            // 
+            ExitButton.FlatAppearance.BorderSize = 0;
+            ExitButton.FlatStyle = FlatStyle.Flat;
+            ExitButton.Location = new Point(836, 836);
+            ExitButton.Name = "ExitButton";
+            ExitButton.Size = new Size(260, 100);
+            ExitButton.TabIndex = 3;
+            ExitButton.UseVisualStyleBackColor = true;
+            ExitButton.Click += button1_Click;
             // 
             // MenuForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.Control;
+            BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(1920, 1080);
+            Controls.Add(ExitButton);
             Controls.Add(logo);
             Controls.Add(RulesButton);
             Controls.Add(StartButton);
@@ -93,5 +103,6 @@ namespace CringeGame
         private Button StartButton;
         private Button RulesButton;
         private PictureBox logo;
+        private Button ExitButton;
     }
 }
