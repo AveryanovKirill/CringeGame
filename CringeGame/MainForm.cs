@@ -28,7 +28,7 @@ namespace CringeGame
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            PanelForm(new MenuForm(this));
+            PanelForm(new PreparingForm(this));
         }
     }
 }
