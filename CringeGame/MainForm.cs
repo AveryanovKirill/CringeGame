@@ -1,12 +1,13 @@
 using System.Numerics;
 using System.Windows.Forms;
+using CringeGame.Logic;
 
 namespace CringeGame
 {
     public partial class MainForm : Form
     {
         private Form activeForm;
-
+        private Game _game;
         public MainForm()
         {
             InitializeComponent();
@@ -30,5 +31,12 @@ namespace CringeGame
         {
             PanelForm(new PreparingForm(this));
         }
+
+        public void SetGame(Game game)
+        {
+            _game = game;
+        }
+
+        public Game Game { get { return _game; } }
     }
 }

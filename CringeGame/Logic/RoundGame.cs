@@ -6,18 +6,20 @@ using System.Threading.Tasks;
 
 namespace CringeGame.Logic
 {
-    internal class RoundGame
+    public class RoundGame
     {
         private readonly List<Player> _players;
         private readonly int _numberRound;
+        private readonly Player _currentPlayer;
         private Judge _judge;
         private Player _selecetedJudgePlayer;
         private int _judgeNumber;
 
-        public RoundGame(List<Player> players, int numberRound)
+        public RoundGame(List<Player> players, Player currentPlayer, int numberRound)
         {
             _players = players;
             _numberRound = numberRound;
+            _currentPlayer = currentPlayer;
             ChooseJudge();
         }
 

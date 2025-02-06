@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CringeGame.Logic
 {
-    internal class Default
+    public class Default
     {
         // можно переделать с наследованием
         private readonly Player _player;

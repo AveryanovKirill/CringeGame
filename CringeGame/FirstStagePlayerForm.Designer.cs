@@ -93,6 +93,7 @@
             stackOfCards.Size = new Size(277, 426);
             stackOfCards.TabIndex = 4;
             stackOfCards.TabStop = false;
+            stackOfCards.Click += stackOfCards_Click;
             // 
             // firstCard
             // 

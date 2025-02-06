@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CringeGame.Logic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,10 +14,19 @@ namespace CringeGame
     public partial class FirstStagePlayerForm : Form
     {
         private MainForm mainForm;
-        public FirstStagePlayerForm(MainForm form)
+        private readonly Game _game;
+        private readonly RoundGame _roundGame;
+        public FirstStagePlayerForm(MainForm form, Game game, RoundGame round)
         {
             mainForm = form;
+            _game = game;
+            _roundGame = round;
             InitializeComponent();
+        }
+
+        private void stackOfCards_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

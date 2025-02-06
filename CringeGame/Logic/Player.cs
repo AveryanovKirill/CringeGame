@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CringeGame.Logic
 {
-    internal class Player
+    public class Player
     {
         private readonly string _name;
         private int _score = 0;
@@ -41,7 +41,11 @@ namespace CringeGame.Logic
         public void SetCards()
         {
             //Дописать логику считывания из Json Файла
-            _cards = new List<Card>();
+            if (_role == Role.Default)
+            {
+                _cards = Card.FromJsonFile(@"config/default_player_cards.json");
+            }
+            else _cards = Card.FromJsonFile(@"config/judge_cards.json");
         }
     }
 }

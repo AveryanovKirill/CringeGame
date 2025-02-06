@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace CringeGame.Logic
 {
-    internal class Game
+    public class Game
     {
         private List<Player> _players;
+        private Player _currentPlayer;
         private Player winner;
         private int _countRounds = 0;
+        private RoundGame _currentRound;
         public Game(string[] users) 
         { 
             _players = new List<Player>();
@@ -19,7 +21,28 @@ namespace CringeGame.Logic
                 _players.Add(new Player(username));
             } 
         }
+        public Player CurrentPlayer { get { return _currentPlayer; } }
+
+        public RoundGame CurrentRound { get { return _currentRound; } }
+
+        public Game(List<Player> players, Player player)
+        { 
+            _players = players; 
+            _currentPlayer = player;
+        }
+
+        public Game()
+        {
+
+        }
+
         public void Start()
+        {
+            _countRounds++;
+            _currentRound = new RoundGame(_players, _currentPlayer, _countRounds);
+        }
+
+        private void OldStart()
         {
             while(true)
             {
@@ -39,5 +62,7 @@ namespace CringeGame.Logic
         }
         public bool TryGetWinner(Player player) => (player.Score == 10);
         public Player GetWinner() => winner;
+
+        public List<Player> GetPlayers() => _players;
     }
 }
