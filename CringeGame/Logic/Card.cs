@@ -20,7 +20,21 @@ namespace CringeGame.Logic
             _text = text;
         }
 
-        public static List<Card> FromJsonFile(string filePath)
+        public static List<Card> GetRandomCards(string filePath)
+        {
+            var cards = GetAllCards(filePath);
+
+            if (cards == null || cards.Count < 4)
+            {
+                Console.WriteLine("Недостаточно карт для выбора 4 случайных.");
+                return null;
+            }
+
+            Random random = new Random();
+            return cards.OrderBy(x => random.Next()).Take(4).ToList();
+        }
+
+        private static List<Card> GetAllCards(string filePath)
         {
             try
             {

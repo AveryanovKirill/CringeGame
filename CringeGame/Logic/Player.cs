@@ -22,7 +22,7 @@ namespace CringeGame.Logic
         public int Score { get { return _score; } }
         public List<Card> Cards { get { return _cards; } }
         public Role Role { get { return _role; } }
-
+        public string Name { get { return _name; } }
         public void AddScore()
         {
             _score += 1;
@@ -43,9 +43,10 @@ namespace CringeGame.Logic
             //Дописать логику считывания из Json Файла
             if (_role == Role.Default)
             {
-                _cards = Card.FromJsonFile(@"config/default_player_cards.json");
+                _cards = Card.GetRandomCards(@"C:\Users\avery\source\repos\CringeGame\CringeGame\config\default_player_cards.json");
             }
-            else _cards = Card.FromJsonFile(@"config/judge_cards.json");
+            else _cards = Card.GetRandomCards(@"C:\Users\avery\source\repos\CringeGame\CringeGame\config\judge_cards.json");
         }
+
     }
 }

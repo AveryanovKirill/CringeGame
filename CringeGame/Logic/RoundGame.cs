@@ -22,13 +22,13 @@ namespace CringeGame.Logic
             _currentPlayer = currentPlayer;
             ChooseJudge();
         }
-
+        public Player JudgePlayer { get { return _judge.Player; } }
         private void ChooseJudge()
         {
             var random_numder = new Random().Next(0, _players.Count);
-            _selecetedJudgePlayer = _players[random_numder];
-            Judge judge = new Judge(_selecetedJudgePlayer);
+            _selecetedJudgePlayer = _players[random_numder]; 
             _selecetedJudgePlayer.SetRole(Role.Judge);
+            Judge judge = new Judge(_selecetedJudgePlayer);
             _judge = judge;
             _judgeNumber = random_numder;
         }
