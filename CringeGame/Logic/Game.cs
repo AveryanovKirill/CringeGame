@@ -47,7 +47,7 @@ namespace CringeGame.Logic
             while(true)
             {
                 _countRounds++;
-                var round = new RoundGame(_players, _countRounds);
+                var round = new RoundGame(_players, _currentPlayer , _countRounds);
                 round.Start();
                 var result = round.Finish();
                 result.Winner.Player.AddScore();

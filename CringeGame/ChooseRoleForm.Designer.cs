@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             chooseJudge = new Label();
             nickname = new Label();
-            fortuna = new Label();
-            arrow = new Label();
+            timerFortuna = new System.Windows.Forms.Timer(components);
+            wheelPictureBox = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)wheelPictureBox).BeginInit();
             SuspendLayout();
             // 
             // chooseJudge
@@ -56,22 +58,21 @@
             nickname.TabIndex = 1;
             nickname.Text = "Ник (заменяется каждую сек)";
             // 
-            // fortuna
+            // timerFortuna
             // 
-            fortuna.Image = Properties.Resources.fortuna;
-            fortuna.Location = new Point(869, 586);
-            fortuna.Name = "fortuna";
-            fortuna.Size = new Size(303, 303);
-            fortuna.TabIndex = 2;
+            timerFortuna.Enabled = true;
+            timerFortuna.Interval = 10;
+            timerFortuna.Tick += timerFortuna_Tick;
             // 
-            // arrow
+            // wheelPictureBox
             // 
-            arrow.BackColor = Color.Transparent;
-            arrow.Image = Properties.Resources.arrow;
-            arrow.Location = new Point(1188, 628);
-            arrow.Name = "arrow";
-            arrow.Size = new Size(78, 130);
-            arrow.TabIndex = 3;
+            wheelPictureBox.Image = Properties.Resources.fortuna;
+            wheelPictureBox.Location = new Point(864, 586);
+            wheelPictureBox.Name = "wheelPictureBox";
+            wheelPictureBox.Size = new Size(308, 307);
+            wheelPictureBox.TabIndex = 4;
+            wheelPictureBox.TabStop = false;
+            wheelPictureBox.Paint += wheelPictureBox_Paint_1;
             // 
             // ChooseRoleForm
             // 
@@ -79,12 +80,13 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             ClientSize = new Size(1920, 1061);
-            Controls.Add(arrow);
-            Controls.Add(fortuna);
+            Controls.Add(wheelPictureBox);
             Controls.Add(nickname);
             Controls.Add(chooseJudge);
+            ForeColor = SystemColors.ControlText;
             Name = "ChooseRoleForm";
             Text = "ChooseRole";
+            ((System.ComponentModel.ISupportInitialize)wheelPictureBox).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -93,7 +95,7 @@
 
         private Label chooseJudge;
         private Label nickname;
-        private Label fortuna;
-        private Label arrow;
+        private System.Windows.Forms.Timer timerFortuna;
+        private PictureBox wheelPictureBox;
     }
 }

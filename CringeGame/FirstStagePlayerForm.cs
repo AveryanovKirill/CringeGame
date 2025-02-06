@@ -16,11 +16,9 @@ namespace CringeGame
         private MainForm mainForm;
         private readonly Game _game;
         private readonly RoundGame _roundGame;
-        public FirstStagePlayerForm(MainForm form, Game game, RoundGame round)
+        public FirstStagePlayerForm(MainForm form)
         {
             mainForm = form;
-            _game = game;
-            _roundGame = round;
             InitializeComponent();
         }
 
