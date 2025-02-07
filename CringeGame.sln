@@ -1,9 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35506.116 d17.12
+VisualStudioVersion = 17.12.35506.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CringeGame", "CringeGame\CringeGame.csproj", "{74792CF7-3826-4DBA-B3B2-E52CB5BADA07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCPServer", "TCPServer\TCPServer.csproj", "{947E77EF-02B3-4C57-A125-E07BAAA6E587}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCPClient", "TCPClient\TCPClient.csproj", "{6B117819-9BFF-4918-8BF3-4EF5A77C037E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XProtocol", "XProtocol\XProtocol.csproj", "{7F2CBDC6-CCCC-4A97-BE63-F50ACC1A9C64}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{74792CF7-3826-4DBA-B3B2-E52CB5BADA07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74792CF7-3826-4DBA-B3B2-E52CB5BADA07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74792CF7-3826-4DBA-B3B2-E52CB5BADA07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{947E77EF-02B3-4C57-A125-E07BAAA6E587}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{947E77EF-02B3-4C57-A125-E07BAAA6E587}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{947E77EF-02B3-4C57-A125-E07BAAA6E587}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{947E77EF-02B3-4C57-A125-E07BAAA6E587}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B117819-9BFF-4918-8BF3-4EF5A77C037E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B117819-9BFF-4918-8BF3-4EF5A77C037E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B117819-9BFF-4918-8BF3-4EF5A77C037E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B117819-9BFF-4918-8BF3-4EF5A77C037E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F2CBDC6-CCCC-4A97-BE63-F50ACC1A9C64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F2CBDC6-CCCC-4A97-BE63-F50ACC1A9C64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F2CBDC6-CCCC-4A97-BE63-F50ACC1A9C64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F2CBDC6-CCCC-4A97-BE63-F50ACC1A9C64}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

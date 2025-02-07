@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json;
 
 namespace CringeGame.Logic
 {
@@ -43,9 +44,9 @@ namespace CringeGame.Logic
             //Дописать логику считывания из Json Файла
             if (_role == Role.Default)
             {
-                _cards = Card.GetRandomCards(@"C:\Users\sasha\source\repos\CringeGame\CringeGame\config\default_player_cards.json");
+                _cards = Card.GetRandomCards(@"C:\Users\avery\source\repos\CringeGame\CringeGame\config\default_player_cards.json");
             }
-            else _cards = Card.GetRandomCards(@"C:\Users\sasha\source\repos\CringeGame\CringeGame\config\judge_cards.json");
+            else _cards = Card.GetRandomCards(@"C:\Users\avery\source\repos\CringeGame\CringeGame\config\judge_cards.json");
         }
 
     }
