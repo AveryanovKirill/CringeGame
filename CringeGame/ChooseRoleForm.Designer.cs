@@ -33,6 +33,7 @@
             nickname = new Label();
             timerFortuna = new System.Windows.Forms.Timer(components);
             wheelPictureBox = new PictureBox();
+            nicknameTimer = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)wheelPictureBox).BeginInit();
             SuspendLayout();
             // 
@@ -41,22 +42,24 @@
             chooseJudge.AutoSize = true;
             chooseJudge.Font = new Font("Segoe UI", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             chooseJudge.ForeColor = Color.White;
-            chooseJudge.Location = new Point(887, 384);
+            chooseJudge.Location = new Point(892, 384);
             chooseJudge.Name = "chooseJudge";
             chooseJudge.Size = new Size(251, 47);
             chooseJudge.TabIndex = 0;
             chooseJudge.Text = "Выбор судьи...";
+            chooseJudge.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // nickname
             // 
             nickname.AutoSize = true;
             nickname.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
             nickname.ForeColor = Color.White;
-            nickname.Location = new Point(832, 443);
+            nickname.Location = new Point(845, 431);
             nickname.Name = "nickname";
             nickname.Size = new Size(340, 32);
             nickname.TabIndex = 1;
             nickname.Text = "Ник (заменяется каждую сек)";
+            nickname.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // timerFortuna
             // 
@@ -72,7 +75,12 @@
             wheelPictureBox.Size = new Size(308, 307);
             wheelPictureBox.TabIndex = 4;
             wheelPictureBox.TabStop = false;
-            wheelPictureBox.Paint += wheelPictureBox_Paint_1;
+            wheelPictureBox.Paint += wheelPictureBox_Paint;
+            // 
+            // nicknameTimer
+            // 
+            nicknameTimer.Interval = 25;
+            nicknameTimer.Tick += nicknameTimer_Tick;
             // 
             // ChooseRoleForm
             // 
@@ -97,5 +105,6 @@
         private Label nickname;
         private System.Windows.Forms.Timer timerFortuna;
         private PictureBox wheelPictureBox;
+        private System.Windows.Forms.Timer nicknameTimer;
     }
 }

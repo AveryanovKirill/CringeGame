@@ -26,8 +26,14 @@ namespace CringeGame
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var player = new Player("1"); // подтягивать имя с другой формы
+            var player = new Player("Салимов"); // подтягивать имя с другой формы
+            var player2 = new Player("Тимерхан");
+            var player3 = new Player("Алмаз");
+            var player4 = new Player("Цивилийский");
             _players.Add(player);
+            _players.Add(player2);
+            _players.Add(player3);
+            _players.Add(player4);
             _currentPlayer = player;
             if (TryGetAllPlayers())
             {
@@ -54,7 +60,7 @@ namespace CringeGame
 
         private bool TryGetAllPlayers()
         {
-            return _players.Count == 1;
+            return _players.Count == 4;
         }
     }
 }

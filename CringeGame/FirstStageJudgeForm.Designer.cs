@@ -85,14 +85,19 @@
             // 
             // firstStatement
             // 
+            firstStatement.Font = new Font("Segoe UI", 20F);
+            firstStatement.ForeColor = SystemColors.ControlLight;
             firstStatement.Image = Properties.Resources.statement_card;
-            firstStatement.Location = new Point(465, 345);
+            firstStatement.Location = new Point(468, 345);
             firstStatement.Name = "firstStatement";
             firstStatement.Size = new Size(207, 368);
             firstStatement.TabIndex = 4;
+            firstStatement.Text = "TestWord";
             // 
             // secondStatement
             // 
+            secondStatement.Font = new Font("Segoe UI", 20F);
+            secondStatement.ForeColor = SystemColors.ControlLight;
             secondStatement.Image = Properties.Resources.statement_card;
             secondStatement.Location = new Point(720, 345);
             secondStatement.Name = "secondStatement";
@@ -101,6 +106,8 @@
             // 
             // thirdStatement
             // 
+            thirdStatement.Font = new Font("Segoe UI", 20F);
+            thirdStatement.ForeColor = SystemColors.ControlLight;
             thirdStatement.Image = Properties.Resources.statement_card;
             thirdStatement.Location = new Point(973, 345);
             thirdStatement.Name = "thirdStatement";
@@ -109,6 +116,8 @@
             // 
             // fourStatement
             // 
+            fourStatement.Font = new Font("Segoe UI", 20F);
+            fourStatement.ForeColor = SystemColors.ControlLight;
             fourStatement.Image = Properties.Resources.statement_card;
             fourStatement.Location = new Point(1222, 345);
             fourStatement.Name = "fourStatement";

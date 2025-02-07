@@ -11,6 +11,7 @@ namespace CringeGame.Logic
         // можно переделать с наследованием
         private readonly Player _player;
         private readonly Card _selectedJudgeCard;
+        private readonly List<Card> _cards;
         private Card _selectedCard;
 
         public Default(Player player, Card card)
@@ -18,6 +19,7 @@ namespace CringeGame.Logic
             _player = player;
             _selectedJudgeCard = card;
             _player.SetCards();
+            _cards = _player.Cards;
             Start();
         }
 

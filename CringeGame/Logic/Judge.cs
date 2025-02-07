@@ -19,7 +19,7 @@ namespace CringeGame.Logic
             _player = player;
             _player.SetCards();
             _cards = _player.Cards;
-            Start();
+            //Start();
         }
 
         public Card SelectedCard { get { return _selectedCard; } }
