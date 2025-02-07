@@ -38,6 +38,7 @@
             thirdStatement = new Label();
             fourStatement = new Label();
             selectTimer = new System.Windows.Forms.Timer(components);
+            listRoles = new ListBox();
             SuspendLayout();
             // 
             // role
@@ -45,7 +46,7 @@
             role.AutoSize = true;
             role.Font = new Font("Segoe UI", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             role.ForeColor = Color.White;
-            role.Location = new Point(119, 9);
+            role.Location = new Point(12, 9);
             role.Name = "role";
             role.Size = new Size(114, 47);
             role.TabIndex = 0;
@@ -69,9 +70,9 @@
             listPlayers.ForeColor = Color.White;
             listPlayers.FormattingEnabled = true;
             listPlayers.ItemHeight = 32;
-            listPlayers.Location = new Point(1724, 12);
+            listPlayers.Location = new Point(1553, 9);
             listPlayers.Name = "listPlayers";
-            listPlayers.Size = new Size(184, 420);
+            listPlayers.Size = new Size(253, 260);
             listPlayers.TabIndex = 2;
             // 
             // round
@@ -90,9 +91,9 @@
             firstStatement.Font = new Font("Segoe UI", 20F);
             firstStatement.ForeColor = SystemColors.ControlLight;
             firstStatement.Image = Properties.Resources.statement_card;
-            firstStatement.Location = new Point(468, 345);
+            firstStatement.Location = new Point(468, 336);
             firstStatement.Name = "firstStatement";
-            firstStatement.Size = new Size(207, 368);
+            firstStatement.Size = new Size(214, 377);
             firstStatement.TabIndex = 0;
             firstStatement.Text = "TestWord";
             firstStatement.Click += JudgeCard_Click;
@@ -102,9 +103,9 @@
             secondStatement.Font = new Font("Segoe UI", 20F);
             secondStatement.ForeColor = SystemColors.ControlLight;
             secondStatement.Image = Properties.Resources.statement_card;
-            secondStatement.Location = new Point(720, 345);
+            secondStatement.Location = new Point(718, 336);
             secondStatement.Name = "secondStatement";
-            secondStatement.Size = new Size(207, 368);
+            secondStatement.Size = new Size(214, 377);
             secondStatement.TabIndex = 1;
             secondStatement.Click += JudgeCard_Click;
             // 
@@ -113,9 +114,9 @@
             thirdStatement.Font = new Font("Segoe UI", 20F);
             thirdStatement.ForeColor = SystemColors.ControlLight;
             thirdStatement.Image = Properties.Resources.statement_card;
-            thirdStatement.Location = new Point(973, 345);
+            thirdStatement.Location = new Point(971, 336);
             thirdStatement.Name = "thirdStatement";
-            thirdStatement.Size = new Size(207, 368);
+            thirdStatement.Size = new Size(214, 377);
             thirdStatement.TabIndex = 2;
             thirdStatement.Click += JudgeCard_Click;
             // 
@@ -124,9 +125,9 @@
             fourStatement.Font = new Font("Segoe UI", 20F);
             fourStatement.ForeColor = SystemColors.ControlLight;
             fourStatement.Image = Properties.Resources.statement_card;
-            fourStatement.Location = new Point(1222, 345);
+            fourStatement.Location = new Point(1223, 336);
             fourStatement.Name = "fourStatement";
-            fourStatement.Size = new Size(207, 368);
+            fourStatement.Size = new Size(214, 377);
             fourStatement.TabIndex = 3;
             fourStatement.Click += JudgeCard_Click;
             // 
@@ -135,12 +136,25 @@
             selectTimer.Interval = 1000;
             selectTimer.Tick += selectTimer_Tick;
             // 
+            // listRoles
+            // 
+            listRoles.BackColor = Color.Black;
+            listRoles.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            listRoles.ForeColor = Color.White;
+            listRoles.FormattingEnabled = true;
+            listRoles.ItemHeight = 32;
+            listRoles.Location = new Point(1804, 9);
+            listRoles.Name = "listRoles";
+            listRoles.Size = new Size(104, 260);
+            listRoles.TabIndex = 4;
+            // 
             // FirstStageJudgeForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             ClientSize = new Size(1920, 1061);
+            Controls.Add(listRoles);
             Controls.Add(fourStatement);
             Controls.Add(thirdStatement);
             Controls.Add(secondStatement);
@@ -151,6 +165,7 @@
             Controls.Add(role);
             Name = "FirstStageJudgeForm";
             Text = "FirstStageJudge";
+            Load += FirstStageJudgeForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -166,5 +181,6 @@
         private Label thirdStatement;
         private Label fourStatement;
         private System.Windows.Forms.Timer selectTimer;
+        private ListBox listRoles;
     }
 }

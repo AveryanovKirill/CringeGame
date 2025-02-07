@@ -21,12 +21,13 @@ namespace CringeGame
         {
             mainForm = form;
             InitializeComponent();
-            _players = new List<Player>();
+            _players = mainForm.Game.CurrentPlayers;
+            _currentPlayer = mainForm.Game.CurrentPlayer;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void PreparingForm_Load(object sender, EventArgs e)
         {
-            var player = new Player("Салимов"); // подтягивать имя с другой формы
+            var player = new Player("Салимов");
             var player2 = new Player("Тимерхан");
             var player3 = new Player("Алмаз");
             var player4 = new Player("Цивилийский");
@@ -36,14 +37,40 @@ namespace CringeGame
             _players.Add(player3);
             _players.Add(player4);
             _players.Add(player5);
-            _currentPlayer = player;
-            if (TryGetAllPlayers())
+
+            countPlayers.Text = $"{_players.Count}/5";
+
+            foreach (var user in _players)
             {
-                var game = new Game(_players, _currentPlayer);
-                mainForm.SetGame(game);
-                mainForm.PanelForm(new ChooseRoleForm(mainForm));
-                //ChooseForm();
+                listPlayers.Items.Add(user.Name);
+                listStatus.Items.Add(user.Role); //Установить статус готовности игроков
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //var player = new Player("Салимов"); // подтягивать имя с другой формы
+            //var player2 = new Player("Тимерхан");
+            //var player3 = new Player("Алмаз");
+            //var player4 = new Player("Цивилийский");
+            //var player5 = new Player("Погогите :(");
+            //_players.Add(player);
+            //_players.Add(player2);
+            //_players.Add(player3);
+            //_players.Add(player4);
+            //_players.Add(player5);
+            //_currentPlayer = player;
+            //if (TryGetAllPlayers())
+            //{
+            //    var game = new Game(_players, _currentPlayer);
+            //    mainForm.SetGame(game);
+            //    mainForm.PanelForm(new ChooseRoleForm(mainForm));
+            //    //ChooseForm();
+            //}
+
+            var game = new Game(_players, _currentPlayer);
+            mainForm.SetGame(game);
+            mainForm.PanelForm(new ChooseRoleForm(mainForm));
         }
 
         private void CreateGame()
@@ -53,7 +80,7 @@ namespace CringeGame
 
         private void ChooseForm()
         {
-            if(_currentPlayer != null && _currentPlayer.Role == Role.Judge)
+            if (_currentPlayer != null && _currentPlayer.Role == Role.Judge)
             {
                 mainForm.PanelForm(new FirstStageJudgeForm(mainForm));
             }

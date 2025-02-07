@@ -73,6 +73,16 @@ namespace CringeGame.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap answer_card_selected_ {
+            get {
+                object obj = ResourceManager.GetObject("answer_card(selected)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap arrow {
             get {
                 object obj = ResourceManager.GetObject("arrow", resourceCulture);
@@ -123,6 +133,16 @@ namespace CringeGame.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap logo {
+            get {
+                object obj = ResourceManager.GetObject("logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap stack_cards {
             get {
                 object obj = ResourceManager.GetObject("stack_cards", resourceCulture);
@@ -146,6 +166,26 @@ namespace CringeGame.Properties {
         internal static System.Drawing.Bitmap statement_card {
             get {
                 object obj = ResourceManager.GetObject("statement_card", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap statement_card_selected_ {
+            get {
+                object obj = ResourceManager.GetObject("statement_card(selected)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap winner_card {
+            get {
+                object obj = ResourceManager.GetObject("winner_card", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

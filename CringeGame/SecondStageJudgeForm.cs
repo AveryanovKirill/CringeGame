@@ -17,6 +17,7 @@ namespace CringeGame
         private readonly Player _currentPlayer;
         private readonly Judge _judge;
         private int time = 19;
+        private readonly List<Player> _players;
         public SecondStageJudgeForm(MainForm form)
         {
             mainForm = form;
@@ -25,6 +26,16 @@ namespace CringeGame
             InitializeComponent();
             round.Text = mainForm.Game.CurrentRound.NumberRound.ToString();
             selectTimer.Start();
+            _players = mainForm.Game.CurrentPlayers;
+        }
+
+        private void SecondStageJudgeForm_Load(object sender, EventArgs e)
+        {
+            foreach (var user in _players)
+            {
+                listPlayers.Items.Add(user.Name);
+                listRoles.Items.Add(user.Role == Role.Default ? "Игрок" : "Судья");
+            }
         }
 
         private void selectTimer_Tick(object sender, EventArgs e)

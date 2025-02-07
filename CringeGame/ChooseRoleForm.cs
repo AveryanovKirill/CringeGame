@@ -31,7 +31,7 @@ namespace CringeGame
             _currentRound = _game.CurrentRound;
             _players = _game.GetPlayers();
             InitializeComponent();
-            arrowImage = new Bitmap(Properties.Resources.arrow2); // Загрузите изображение стрелки
+            arrowImage = new Bitmap(Properties.Resources.arrow2); // Загрузка изображение стрелки
             timerFortuna.Start();
             nicknameTimer.Start();
         }

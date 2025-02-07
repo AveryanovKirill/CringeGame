@@ -40,11 +40,11 @@
             // chooseJudge
             // 
             chooseJudge.AutoSize = true;
-            chooseJudge.Font = new Font("Segoe UI", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            chooseJudge.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 204);
             chooseJudge.ForeColor = Color.White;
-            chooseJudge.Location = new Point(892, 384);
+            chooseJudge.Location = new Point(798, 169);
             chooseJudge.Name = "chooseJudge";
-            chooseJudge.Size = new Size(251, 47);
+            chooseJudge.Size = new Size(372, 65);
             chooseJudge.TabIndex = 0;
             chooseJudge.Text = "Выбор судьи...";
             chooseJudge.TextAlign = ContentAlignment.MiddleCenter;
@@ -54,7 +54,7 @@
             nickname.AutoSize = true;
             nickname.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
             nickname.ForeColor = Color.White;
-            nickname.Location = new Point(845, 431);
+            nickname.Location = new Point(811, 234);
             nickname.Name = "nickname";
             nickname.Size = new Size(340, 32);
             nickname.TabIndex = 1;
@@ -70,7 +70,7 @@
             // wheelPictureBox
             // 
             wheelPictureBox.Image = Properties.Resources.fortuna;
-            wheelPictureBox.Location = new Point(864, 586);
+            wheelPictureBox.Location = new Point(843, 461);
             wheelPictureBox.Name = "wheelPictureBox";
             wheelPictureBox.Size = new Size(308, 307);
             wheelPictureBox.TabIndex = 4;

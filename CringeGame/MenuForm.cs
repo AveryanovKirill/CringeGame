@@ -25,7 +25,7 @@ namespace CringeGame
 
         private void StartButton_Click(object sender, EventArgs e)
         {
-            //mainForm.PanelForm(new ColorForm(mainForm));
+            mainForm.PanelForm(new AuthForm(mainForm));
         }
 
         private void RulesButton_Click(object sender, EventArgs e)
@@ -33,9 +33,9 @@ namespace CringeGame
             //mainForm.PanelForm(new Rule1(mainForm));
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ExitButton_Click(object sender, EventArgs e)
         {
-
+            mainForm.Close();
         }
     }
 }

@@ -39,6 +39,7 @@ namespace CringeGame
             round = new Label();
             waitJudge = new Label();
             selectTimer = new System.Windows.Forms.Timer(components);
+            listRoles = new ListBox();
             SuspendLayout();
             // 
             // role
@@ -46,7 +47,7 @@ namespace CringeGame
             role.AutoSize = true;
             role.Font = new Font("Segoe UI", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             role.ForeColor = Color.White;
-            role.Location = new Point(119, 9);
+            role.Location = new Point(12, 9);
             role.Name = "role";
             role.Size = new Size(118, 47);
             role.TabIndex = 0;
@@ -57,7 +58,7 @@ namespace CringeGame
             timeLabel.AutoSize = true;
             timeLabel.Font = new Font("Segoe UI", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             timeLabel.ForeColor = Color.White;
-            timeLabel.Location = new Point(902, 13);
+            timeLabel.Location = new Point(917, 12);
             timeLabel.Name = "timeLabel";
             timeLabel.Size = new Size(58, 47);
             timeLabel.TabIndex = 1;
@@ -70,9 +71,9 @@ namespace CringeGame
             listPlayers.ForeColor = Color.White;
             listPlayers.FormattingEnabled = true;
             listPlayers.ItemHeight = 32;
-            listPlayers.Location = new Point(1724, 12);
+            listPlayers.Location = new Point(1554, 9);
             listPlayers.Name = "listPlayers";
-            listPlayers.Size = new Size(184, 420);
+            listPlayers.Size = new Size(253, 260);
             listPlayers.TabIndex = 2;
             // 
             // round
@@ -102,12 +103,25 @@ namespace CringeGame
             selectTimer.Interval = 1000;
             selectTimer.Tick += selectTimer_Tick;
             // 
+            // listRoles
+            // 
+            listRoles.BackColor = Color.Black;
+            listRoles.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            listRoles.ForeColor = Color.White;
+            listRoles.FormattingEnabled = true;
+            listRoles.ItemHeight = 32;
+            listRoles.Location = new Point(1804, 9);
+            listRoles.Name = "listRoles";
+            listRoles.Size = new Size(104, 260);
+            listRoles.TabIndex = 10;
+            // 
             // ThirdStagePlayerForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             ClientSize = new Size(1920, 1061);
+            Controls.Add(listRoles);
             Controls.Add(waitJudge);
             Controls.Add(round);
             Controls.Add(listPlayers);
@@ -115,6 +129,7 @@ namespace CringeGame
             Controls.Add(role);
             Name = "ThirdStagePlayerForm";
             Text = "ThirdStagePlayer";
+            Load += ThirdStagePlayerForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -127,5 +142,6 @@ namespace CringeGame
         private Label round;
         private Label waitJudge;
         private System.Windows.Forms.Timer selectTimer;
+        private ListBox listRoles;
     }
 }

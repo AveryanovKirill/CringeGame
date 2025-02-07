@@ -40,7 +40,7 @@
             waitPlayers.AutoSize = true;
             waitPlayers.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
             waitPlayers.ForeColor = Color.White;
-            waitPlayers.Location = new Point(779, 125);
+            waitPlayers.Location = new Point(742, 126);
             waitPlayers.Name = "waitPlayers";
             waitPlayers.Size = new Size(351, 47);
             waitPlayers.TabIndex = 0;
@@ -51,11 +51,11 @@
             countPlayers.AutoSize = true;
             countPlayers.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
             countPlayers.ForeColor = Color.White;
-            countPlayers.Location = new Point(1145, 125);
+            countPlayers.Location = new Point(1108, 126);
             countPlayers.Name = "countPlayers";
             countPlayers.Size = new Size(76, 47);
             countPlayers.TabIndex = 1;
-            countPlayers.Text = "1/4";
+            countPlayers.Text = "1/5";
             // 
             // listPlayers
             // 
@@ -64,9 +64,9 @@
             listPlayers.ForeColor = Color.White;
             listPlayers.FormattingEnabled = true;
             listPlayers.ItemHeight = 30;
-            listPlayers.Location = new Point(785, 266);
+            listPlayers.Location = new Point(748, 267);
             listPlayers.Name = "listPlayers";
-            listPlayers.Size = new Size(154, 304);
+            listPlayers.Size = new Size(209, 424);
             listPlayers.TabIndex = 2;
             // 
             // listStatus
@@ -76,15 +76,15 @@
             listStatus.ForeColor = Color.White;
             listStatus.FormattingEnabled = true;
             listStatus.ItemHeight = 30;
-            listStatus.Location = new Point(1067, 266);
+            listStatus.Location = new Point(976, 267);
             listStatus.Name = "listStatus";
-            listStatus.Size = new Size(154, 304);
+            listStatus.Size = new Size(208, 424);
             listStatus.TabIndex = 3;
             // 
             // button1
             // 
             button1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            button1.Location = new Point(785, 646);
+            button1.Location = new Point(748, 750);
             button1.Name = "button1";
             button1.Size = new Size(436, 54);
             button1.TabIndex = 4;
@@ -105,6 +105,7 @@
             Controls.Add(waitPlayers);
             Name = "PreparingForm";
             Text = "PreparingForm";
+            Load += PreparingForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }

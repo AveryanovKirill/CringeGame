@@ -18,6 +18,7 @@ namespace CringeGame
         private readonly Player _currentPlayer;
         private readonly Judge _judge;
         private int time = 19;
+        private readonly List<Player> _players;
         public ThirdStageJudgeForm(MainForm form)
         {
             mainForm = form;
@@ -27,6 +28,16 @@ namespace CringeGame
             round.Text = mainForm.Game.CurrentRound.NumberRound.ToString();
             selectTimer.Start();
             SetCards();
+            _players = mainForm.Game.CurrentPlayers;
+        }
+
+        private void ThirdStageJudgeForm_Load(object sender, EventArgs e)
+        {
+            foreach (var user in _players)
+            {
+                listPlayers.Items.Add(user.Name);
+                listRoles.Items.Add(user.Role == Role.Default ? "Игрок" : "Судья");
+            }
         }
 
         private void selectTimer_Tick(object sender, EventArgs e)
@@ -55,17 +66,17 @@ namespace CringeGame
 
         private void WinnerCard_Click(object sender, EventArgs e)
         {
-            if(_judge.Winner == null)
+            if (_judge.Winner == null)
             {
                 Label label = sender as Label;
                 // кейсах добавить смену фото
                 // statement_card замени на фото при нажатии
                 switch (label.Name)
                 {
-                    case "firstCard": _judge.ChoosePlayerCard(0); firstCard.Image = Properties.Resources.statement_card; break;
-                    case "secondCard": _judge.ChoosePlayerCard(1); secondCard.Image = Properties.Resources.statement_card; break;
-                    case "thirdCard": _judge.ChoosePlayerCard(2); thirdCard.Image = Properties.Resources.statement_card; break;
-                    case "fourthCard": _judge.ChoosePlayerCard(3); fourthCard.Image = Properties.Resources.statement_card; break;
+                    case "firstCard": _judge.ChoosePlayerCard(0); firstCard.Image = Properties.Resources.winner_card; break;
+                    case "secondCard": _judge.ChoosePlayerCard(1); secondCard.Image = Properties.Resources.winner_card; break;
+                    case "thirdCard": _judge.ChoosePlayerCard(2); thirdCard.Image = Properties.Resources.winner_card; break;
+                    case "fourthCard": _judge.ChoosePlayerCard(3); fourthCard.Image = Properties.Resources.winner_card; break;
                 }
             }
         }

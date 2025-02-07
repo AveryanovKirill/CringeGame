@@ -19,6 +19,7 @@ namespace CringeGame
         private int _countCards;
         private readonly List<Card> _cards;
         private int time = 19;
+        private readonly List<Player> _players;
         public ThirdStagePlayerForm(MainForm form)
         {
             mainForm = form;
@@ -27,6 +28,16 @@ namespace CringeGame
             InitializeComponent();
             round.Text = mainForm.Game.CurrentRound.NumberRound.ToString();
             selectTimer.Start();
+            _players = mainForm.Game.CurrentPlayers;
+        }
+
+        private void ThirdStagePlayerForm_Load(object sender, EventArgs e)
+        {
+            foreach (var user in _players)
+            {
+                listPlayers.Items.Add(user.Name);
+                listRoles.Items.Add(user.Role == Role.Default ? "Игрок" : "Судья");
+            }
         }
 
         private void selectTimer_Tick(object sender, EventArgs e)

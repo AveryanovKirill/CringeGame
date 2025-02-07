@@ -1,10 +1,6 @@
-﻿using static System.Net.Mime.MediaTypeNames;
-using System.Windows.Forms;
-using System.Xml.Linq;
-
-namespace CringeGame
+﻿namespace CringeGame
 {
-    partial class MainForm
+    partial class AuthForm
     {
         /// <summary>
         /// Required designer variable.
@@ -32,33 +28,41 @@ namespace CringeGame
         /// </summary>
         private void InitializeComponent()
         {
-            panel = new Panel();
+            inputNickName = new TextBox();
             SuspendLayout();
             // 
-            // panel
+            // inputNickName
             // 
-            panel.Location = new Point(0, 0);
-            panel.Name = "panel";
-            panel.Size = new Size(1920, 1080);
-            panel.TabIndex = 0;
+            inputNickName.BackColor = Color.Black;
+            inputNickName.BorderStyle = BorderStyle.FixedSingle;
+            inputNickName.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            inputNickName.ForeColor = Color.White;
+            inputNickName.Location = new Point(820, 500);
+            inputNickName.MaxLength = 15;
+            inputNickName.Name = "inputNickName";
+            inputNickName.PlaceholderText = "Кто вы воин?";
+            inputNickName.Size = new Size(300, 39);
+            inputNickName.TabIndex = 5;
+            inputNickName.TabStop = false;
+            inputNickName.TextAlign = HorizontalAlignment.Center;
+            inputNickName.KeyPress += inputNickName_KeyPress;
             // 
-            // MainForm
+            // AuthForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Black;
             ClientSize = new Size(1920, 1061);
-            Controls.Add(panel);
-            Name = "MainForm";
-            Text = "Cringe";
-            WindowState = FormWindowState.Maximized;
-            Load += MainForm_Load;
+            Controls.Add(inputNickName);
+            ForeColor = Color.Transparent;
+            Name = "AuthForm";
+            Text = "AuthForm";
             ResumeLayout(false);
+            PerformLayout();
         }
-
-
 
         #endregion
 
-        private Panel panel;
+        private TextBox inputNickName;
     }
 }

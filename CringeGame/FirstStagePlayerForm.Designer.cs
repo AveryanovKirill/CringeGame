@@ -39,6 +39,7 @@
             thirdCard = new Label();
             fourthCard = new Label();
             selectTimer = new System.Windows.Forms.Timer(components);
+            listRoles = new ListBox();
             ((System.ComponentModel.ISupportInitialize)stackOfCards).BeginInit();
             SuspendLayout();
             // 
@@ -47,7 +48,7 @@
             role.AutoSize = true;
             role.Font = new Font("Segoe UI", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             role.ForeColor = Color.White;
-            role.Location = new Point(118, 9);
+            role.Location = new Point(12, 9);
             role.Name = "role";
             role.Size = new Size(118, 47);
             role.TabIndex = 0;
@@ -58,7 +59,7 @@
             timeLabel.AutoSize = true;
             timeLabel.Font = new Font("Segoe UI", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             timeLabel.ForeColor = Color.White;
-            timeLabel.Location = new Point(942, 12);
+            timeLabel.Location = new Point(917, 12);
             timeLabel.Name = "timeLabel";
             timeLabel.Size = new Size(58, 47);
             timeLabel.TabIndex = 1;
@@ -71,9 +72,9 @@
             listPlayers.ForeColor = Color.White;
             listPlayers.FormattingEnabled = true;
             listPlayers.ItemHeight = 32;
-            listPlayers.Location = new Point(1724, 12);
+            listPlayers.Location = new Point(1553, 9);
             listPlayers.Name = "listPlayers";
-            listPlayers.Size = new Size(184, 420);
+            listPlayers.Size = new Size(253, 260);
             listPlayers.TabIndex = 2;
             // 
             // round
@@ -90,7 +91,7 @@
             // stackOfCards
             // 
             stackOfCards.Image = Properties.Resources.stack_cards_2_;
-            stackOfCards.Location = new Point(826, 154);
+            stackOfCards.Location = new Point(808, 163);
             stackOfCards.Name = "stackOfCards";
             stackOfCards.Size = new Size(281, 430);
             stackOfCards.TabIndex = 4;
@@ -101,7 +102,7 @@
             // 
             firstCard.Font = new Font("Segoe UI", 20F);
             firstCard.Image = Properties.Resources.container_card;
-            firstCard.Location = new Point(508, 653);
+            firstCard.Location = new Point(490, 662);
             firstCard.Name = "firstCard";
             firstCard.Size = new Size(215, 390);
             firstCard.TabIndex = 5;
@@ -110,7 +111,7 @@
             // 
             secondCard.Font = new Font("Segoe UI", 20F);
             secondCard.Image = Properties.Resources.container_card;
-            secondCard.Location = new Point(739, 653);
+            secondCard.Location = new Point(721, 662);
             secondCard.Name = "secondCard";
             secondCard.Size = new Size(215, 390);
             secondCard.TabIndex = 6;
@@ -119,7 +120,7 @@
             // 
             thirdCard.Font = new Font("Segoe UI", 20F);
             thirdCard.Image = Properties.Resources.container_card;
-            thirdCard.Location = new Point(972, 653);
+            thirdCard.Location = new Point(954, 662);
             thirdCard.Name = "thirdCard";
             thirdCard.Size = new Size(215, 390);
             thirdCard.TabIndex = 7;
@@ -128,7 +129,7 @@
             // 
             fourthCard.Font = new Font("Segoe UI", 20F);
             fourthCard.Image = Properties.Resources.container_card;
-            fourthCard.Location = new Point(1212, 653);
+            fourthCard.Location = new Point(1194, 662);
             fourthCard.Name = "fourthCard";
             fourthCard.Size = new Size(215, 390);
             fourthCard.TabIndex = 8;
@@ -138,12 +139,25 @@
             selectTimer.Interval = 1000;
             selectTimer.Tick += selectTimer_Tick;
             // 
+            // listRoles
+            // 
+            listRoles.BackColor = Color.Black;
+            listRoles.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            listRoles.ForeColor = Color.White;
+            listRoles.FormattingEnabled = true;
+            listRoles.ItemHeight = 32;
+            listRoles.Location = new Point(1804, 9);
+            listRoles.Name = "listRoles";
+            listRoles.Size = new Size(104, 260);
+            listRoles.TabIndex = 9;
+            // 
             // FirstStagePlayerForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             ClientSize = new Size(1920, 1061);
+            Controls.Add(listRoles);
             Controls.Add(fourthCard);
             Controls.Add(thirdCard);
             Controls.Add(secondCard);
@@ -155,6 +169,7 @@
             Controls.Add(role);
             Name = "FirstStagePlayerForm";
             Text = "FirstStagePlayer";
+            Load += FirstStagePlayerForm_Load;
             ((System.ComponentModel.ISupportInitialize)stackOfCards).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -172,5 +187,6 @@
         private Label thirdCard;
         private Label fourthCard;
         private System.Windows.Forms.Timer selectTimer;
+        private ListBox listRoles;
     }
 }

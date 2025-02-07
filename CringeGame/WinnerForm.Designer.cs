@@ -42,19 +42,19 @@
             statementCard.Font = new Font("Segoe UI", 20F);
             statementCard.ForeColor = SystemColors.ControlLight;
             statementCard.Image = Properties.Resources.statement_card;
-            statementCard.Location = new Point(635, 193);
+            statementCard.Location = new Point(611, 193);
             statementCard.Name = "statementCard";
-            statementCard.Size = new Size(207, 368);
+            statementCard.Size = new Size(215, 371);
             statementCard.TabIndex = 9;
             statementCard.Text = "TestWord";
             // 
             // answerCard
             // 
             answerCard.Font = new Font("Segoe UI", 20F);
-            answerCard.Image = Properties.Resources.answer_card;
-            answerCard.Location = new Point(1055, 193);
+            answerCard.Image = Properties.Resources.winner_card;
+            answerCard.Location = new Point(1031, 193);
             answerCard.Name = "answerCard";
-            answerCard.Size = new Size(215, 385);
+            answerCard.Size = new Size(215, 388);
             answerCard.TabIndex = 11;
             answerCard.Text = "TestWord";
             // 
@@ -85,11 +85,12 @@
             winnerLabel.AutoSize = true;
             winnerLabel.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
             winnerLabel.ForeColor = Color.White;
-            winnerLabel.Location = new Point(774, 673);
+            winnerLabel.Location = new Point(705, 674);
             winnerLabel.Name = "winnerLabel";
             winnerLabel.Size = new Size(351, 47);
             winnerLabel.TabIndex = 12;
             winnerLabel.Text = "Победитель - (ник)";
+            winnerLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // selectTimer
             // 

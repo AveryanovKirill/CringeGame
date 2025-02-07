@@ -17,6 +17,7 @@ namespace CringeGame
         private readonly Player _currentPlayer;
         private readonly Judge _judge;
         private int time = 19;
+        private readonly List<Player> _players;
         public FirstStageJudgeForm(MainForm form)
         {
             mainForm = form;
@@ -26,6 +27,16 @@ namespace CringeGame
             round.Text = mainForm.Game.CurrentRound.NumberRound.ToString();
             selectTimer.Start();
             SetCards();
+            _players = mainForm.Game.CurrentPlayers;
+        }
+
+        private void FirstStageJudgeForm_Load(object sender, EventArgs e)
+        {
+            foreach (var user in _players)
+            {
+                listPlayers.Items.Add(user.Name);
+                listRoles.Items.Add(user.Role == Role.Default ? "Игрок" : "Судья");
+            }
         }
 
         private void SetCards()
@@ -39,17 +50,16 @@ namespace CringeGame
         private void JudgeCard_Click(object sender, EventArgs e)
         {
             //добавить проверку на то, что есть карта (тебе это не надо делать, это я для себя)
-            if(_judge.SelectedCard == null)
+            if (_judge.SelectedCard == null)
             {
                 Label label = sender as Label;
-                // кейсах добавить смену фото
-                // statement_card замени на фото при нажатии
+
                 switch (label.Name)
                 {
-                    case "firstStatement": _judge.ChooseCard(0); firstStatement.Image = Properties.Resources.answer_card; break; // statement_card замени на фото при нажатии
-                    case "secondStatement": _judge.ChooseCard(1); secondStatement.Image = Properties.Resources.answer_card; break; // statement_card замени на фото при нажатии
-                    case "thirdStatement": _judge.ChooseCard(2); thirdStatement.Image = Properties.Resources.answer_card; break; // statement_card замени на фото при нажатии
-                    case "fourStatement": _judge.ChooseCard(3); fourStatement.Image = Properties.Resources.answer_card; break; // statement_card замени на фото при нажатии
+                    case "firstStatement": _judge.ChooseCard(0); firstStatement.Image = Properties.Resources.statement_card_selected_; break;
+                    case "secondStatement": _judge.ChooseCard(1); secondStatement.Image = Properties.Resources.statement_card_selected_; break;
+                    case "thirdStatement": _judge.ChooseCard(2); thirdStatement.Image = Properties.Resources.statement_card_selected_; break;
+                    case "fourStatement": _judge.ChooseCard(3); fourStatement.Image = Properties.Resources.statement_card_selected_; break;
                 }
             }
             //firstStatement.Enabled = false;
@@ -70,6 +80,11 @@ namespace CringeGame
                 if (_judge.SelectedCard == null) _judge.ChooseCard(0);
                 mainForm.PanelForm(new SecondStageJudgeForm(mainForm));
             }
+        }
+
+        private void listPlayers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -20,6 +20,7 @@ namespace CringeGame
         private readonly Default _default;
         private readonly List<Card> _cards;
         private int time = 19;
+        private readonly List<Player> _players;
         public FirstStagePlayerForm(MainForm form)
         {
             mainForm = form;
@@ -29,6 +30,16 @@ namespace CringeGame
             InitializeComponent();
             round.Text = mainForm.Game.CurrentRound.NumberRound.ToString();
             selectTimer.Start();
+            _players = mainForm.Game.CurrentPlayers;
+        }
+
+        private void FirstStagePlayerForm_Load(object sender, EventArgs e)
+        {
+            foreach (var user in _players)
+            {
+                listPlayers.Items.Add(user.Name);
+                listRoles.Items.Add(user.Role == Role.Default ? "Игрок" : "Судья");
+            }
         }
 
         private void stackOfCards_Click(object sender, EventArgs e)
@@ -50,7 +61,7 @@ namespace CringeGame
 
         private void selectTimer_Tick(object sender, EventArgs e)
         {
-            if(time > 0)
+            if (time > 0)
             {
                 timeLabel.Text = time.ToString();
                 time--;

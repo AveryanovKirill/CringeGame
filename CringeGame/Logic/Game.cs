@@ -25,6 +25,8 @@ namespace CringeGame.Logic
 
         public RoundGame CurrentRound { get { return _currentRound; } }
 
+        public List<Player> CurrentPlayers { get { return _players; } }
+
         public Game(List<Player> players, Player player)
         { 
             _players = players; 

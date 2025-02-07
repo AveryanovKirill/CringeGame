@@ -29,7 +29,7 @@ namespace CringeGame
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            PanelForm(new PreparingForm(this));
+            PanelForm(new MenuForm(this));
         }
 
         public void SetGame(Game game)

@@ -46,6 +46,7 @@ namespace CringeGame
             containerCard = new Label();
             answerCard = new Label();
             selectTimer = new System.Windows.Forms.Timer(components);
+            listRoles = new ListBox();
             SuspendLayout();
             // 
             // role
@@ -53,7 +54,7 @@ namespace CringeGame
             role.AutoSize = true;
             role.Font = new Font("Segoe UI", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             role.ForeColor = Color.White;
-            role.Location = new Point(118, 9);
+            role.Location = new Point(12, 9);
             role.Name = "role";
             role.Size = new Size(118, 47);
             role.TabIndex = 0;
@@ -64,7 +65,7 @@ namespace CringeGame
             timeLabel.AutoSize = true;
             timeLabel.Font = new Font("Segoe UI", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             timeLabel.ForeColor = Color.White;
-            timeLabel.Location = new Point(929, 12);
+            timeLabel.Location = new Point(917, 12);
             timeLabel.Name = "timeLabel";
             timeLabel.Size = new Size(58, 47);
             timeLabel.TabIndex = 1;
@@ -77,9 +78,9 @@ namespace CringeGame
             listPlayers.ForeColor = Color.White;
             listPlayers.FormattingEnabled = true;
             listPlayers.ItemHeight = 32;
-            listPlayers.Location = new Point(1724, 12);
+            listPlayers.Location = new Point(1555, 9);
             listPlayers.Name = "listPlayers";
-            listPlayers.Size = new Size(184, 420);
+            listPlayers.Size = new Size(253, 260);
             listPlayers.TabIndex = 2;
             // 
             // round
@@ -97,7 +98,7 @@ namespace CringeGame
             // 
             firstCard.Font = new Font("Segoe UI", 20F);
             firstCard.Image = Properties.Resources.answer_card;
-            firstCard.Location = new Point(478, 662);
+            firstCard.Location = new Point(462, 659);
             firstCard.Name = "firstCard";
             firstCard.Size = new Size(215, 390);
             firstCard.TabIndex = 5;
@@ -107,7 +108,7 @@ namespace CringeGame
             // 
             secondCard.Font = new Font("Segoe UI", 20F);
             secondCard.Image = Properties.Resources.answer_card;
-            secondCard.Location = new Point(724, 662);
+            secondCard.Location = new Point(708, 659);
             secondCard.Name = "secondCard";
             secondCard.Size = new Size(215, 390);
             secondCard.TabIndex = 6;
@@ -117,7 +118,7 @@ namespace CringeGame
             // 
             thirdCard.Font = new Font("Segoe UI", 20F);
             thirdCard.Image = Properties.Resources.answer_card;
-            thirdCard.Location = new Point(970, 662);
+            thirdCard.Location = new Point(954, 659);
             thirdCard.Name = "thirdCard";
             thirdCard.Size = new Size(215, 390);
             thirdCard.TabIndex = 7;
@@ -127,7 +128,7 @@ namespace CringeGame
             // 
             fourthCard.Font = new Font("Segoe UI", 20F);
             fourthCard.Image = Properties.Resources.answer_card;
-            fourthCard.Location = new Point(1216, 662);
+            fourthCard.Location = new Point(1200, 659);
             fourthCard.Name = "fourthCard";
             fourthCard.Size = new Size(215, 390);
             fourthCard.TabIndex = 8;
@@ -138,7 +139,7 @@ namespace CringeGame
             statementCard.Font = new Font("Segoe UI", 20F);
             statementCard.ForeColor = SystemColors.ControlLight;
             statementCard.Image = Properties.Resources.statement_card;
-            statementCard.Location = new Point(724, 189);
+            statementCard.Location = new Point(708, 186);
             statementCard.Name = "statementCard";
             statementCard.Size = new Size(215, 390);
             statementCard.TabIndex = 9;
@@ -147,7 +148,7 @@ namespace CringeGame
             // 
             containerCard.Font = new Font("Segoe UI", 20F);
             containerCard.Image = Properties.Resources.container_card;
-            containerCard.Location = new Point(970, 189);
+            containerCard.Location = new Point(954, 186);
             containerCard.Name = "containerCard";
             containerCard.Size = new Size(215, 390);
             containerCard.TabIndex = 10;
@@ -156,7 +157,7 @@ namespace CringeGame
             // 
             answerCard.Enabled = false;
             answerCard.Image = Properties.Resources.answer_card;
-            answerCard.Location = new Point(1265, 189);
+            answerCard.Location = new Point(1249, 186);
             answerCard.Name = "answerCard";
             answerCard.Size = new Size(215, 385);
             answerCard.TabIndex = 11;
@@ -167,12 +168,25 @@ namespace CringeGame
             selectTimer.Interval = 1000;
             selectTimer.Tick += selectTimer_Tick;
             // 
+            // listRoles
+            // 
+            listRoles.BackColor = Color.Black;
+            listRoles.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            listRoles.ForeColor = Color.White;
+            listRoles.FormattingEnabled = true;
+            listRoles.ItemHeight = 32;
+            listRoles.Location = new Point(1804, 9);
+            listRoles.Name = "listRoles";
+            listRoles.Size = new Size(104, 260);
+            listRoles.TabIndex = 12;
+            // 
             // SecondStagePlayerForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             ClientSize = new Size(1920, 1061);
+            Controls.Add(listRoles);
             Controls.Add(answerCard);
             Controls.Add(containerCard);
             Controls.Add(statementCard);
@@ -186,6 +200,7 @@ namespace CringeGame
             Controls.Add(role);
             Name = "SecondStagePlayerForm";
             Text = "SecondStagePlayer";
+            Load += SecondStagePlayerForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -204,5 +219,6 @@ namespace CringeGame
         private Label containerCard;
         private Label answerCard;
         private System.Windows.Forms.Timer selectTimer;
+        private ListBox listRoles;
     }
 }
