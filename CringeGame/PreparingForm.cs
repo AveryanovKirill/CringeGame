@@ -31,12 +31,10 @@ namespace CringeGame
             var player2 = new Player("Игрок 2");
             var player3 = new Player("Игрок 3");
             var player4 = new Player("Игрок 4");
-            var player5 = new Player("Игрок 5");
             _players.Add(player);
             _players.Add(player2);
             _players.Add(player3);
             _players.Add(player4);
-            _players.Add(player5);
 
             countPlayers.Text = $"{_players.Count}/5";
 
