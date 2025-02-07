@@ -41,13 +41,11 @@ namespace CringeGame.Logic
 
         public void SetCards()
         {
-            //Дописать логику считывания из Json Файла
             if (_role == Role.Default)
             {
-                _cards = Card.GetRandomCards(@"C:\Users\avery\source\repos\CringeGame\CringeGame\config\default_player_cards.json");
+                _cards = Card.GetRandomCards(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "config", "default_player_cards.json"));
             }
-            else _cards = Card.GetRandomCards(@"C:\Users\avery\source\repos\CringeGame\CringeGame\config\judge_cards.json");
+            else _cards = Card.GetRandomCards(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "config", "judge_cards.json"));
         }
-
     }
 }
