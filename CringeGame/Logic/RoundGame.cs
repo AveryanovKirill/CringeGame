@@ -20,9 +20,13 @@ namespace CringeGame.Logic
             _players = players;
             _numberRound = numberRound;
             _currentPlayer = currentPlayer;
+            SetDefaultRole();
             ChooseJudge();
+            Start();
         }
         public Player JudgePlayer { get { return _judge.Player; } }
+        public int NumberRound { get { return _numberRound; } }
+        public Judge Judge { get { return _judge; } }
         private void ChooseJudge()
         {
             var random_numder = new Random().Next(0, _players.Count);
@@ -41,7 +45,7 @@ namespace CringeGame.Logic
             foreach (var player in _players)
             {
                 if(player.Role == Role.Judge) continue;
-                var defaultPlayer = new Default(player, selectedJudgeCard);
+                var defaultPlayer = new Default(player, _judge);
                 defaults.Add(defaultPlayer);
             }
             _judge.SetDefaultPlayers(defaults);
@@ -53,6 +57,14 @@ namespace CringeGame.Logic
             // в будущем убрать?
             _judge.Finish();
             return (_judge, _judge.Winner);
+        }
+
+        private void SetDefaultRole()
+        {
+            foreach(var player in _players)
+            {
+                player.SetRole(Role.Default);
+            }
         }
     }
 }

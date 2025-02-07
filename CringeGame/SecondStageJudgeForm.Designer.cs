@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             role = new Label();
-            time = new Label();
+            timeLabel = new Label();
             listPlayers = new ListBox();
             round = new Label();
             waitPlayers = new Label();
+            selectTimer = new System.Windows.Forms.Timer(components);
             SuspendLayout();
             // 
             // role
@@ -42,20 +44,20 @@
             role.ForeColor = Color.White;
             role.Location = new Point(119, 9);
             role.Name = "role";
-            role.Size = new Size(118, 47);
+            role.Size = new Size(114, 47);
             role.TabIndex = 0;
             role.Text = "Судья";
             // 
-            // time
+            // timeLabel
             // 
-            time.AutoSize = true;
-            time.Font = new Font("Segoe UI", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            time.ForeColor = Color.White;
-            time.Location = new Point(902, 13);
-            time.Name = "time";
-            time.Size = new Size(109, 47);
-            time.TabIndex = 1;
-            time.Text = "20сек";
+            timeLabel.AutoSize = true;
+            timeLabel.Font = new Font("Segoe UI", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            timeLabel.ForeColor = Color.White;
+            timeLabel.Location = new Point(928, 12);
+            timeLabel.Name = "time";
+            timeLabel.Size = new Size(58, 47);
+            timeLabel.TabIndex = 1;
+            timeLabel.Text = "20";
             // 
             // listPlayers
             // 
@@ -87,11 +89,16 @@
             waitPlayers.ForeColor = Color.White;
             waitPlayers.Location = new Point(699, 429);
             waitPlayers.Name = "waitPlayers";
-            waitPlayers.Size = new Size(500, 47);
+            waitPlayers.Size = new Size(525, 47);
             waitPlayers.TabIndex = 4;
             waitPlayers.Text = "Игроки делают свой выбор...";
             // 
-            // ThirdStagePlayerForm
+            // selectTimer
+            // 
+            selectTimer.Interval = 1000;
+            selectTimer.Tick += selectTimer_Tick;
+            // 
+            // SecondStageJudgeForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -100,7 +107,7 @@
             Controls.Add(waitPlayers);
             Controls.Add(round);
             Controls.Add(listPlayers);
-            Controls.Add(time);
+            Controls.Add(timeLabel);
             Controls.Add(role);
             Name = "SecondStageJudgeForm";
             Text = "SecondStageJudge";
@@ -111,9 +118,10 @@
         #endregion
 
         private Label role;
-        private Label time;
+        private Label timeLabel;
         private ListBox listPlayers;
         private Label round;
         private Label waitPlayers;
+        private System.Windows.Forms.Timer selectTimer;
     }
 }

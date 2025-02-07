@@ -30,10 +30,12 @@ namespace CringeGame
             var player2 = new Player("Тимерхан");
             var player3 = new Player("Алмаз");
             var player4 = new Player("Цивилийский");
+            var player5 = new Player("Погогите :(");
             _players.Add(player);
             _players.Add(player2);
             _players.Add(player3);
             _players.Add(player4);
+            _players.Add(player5);
             _currentPlayer = player;
             if (TryGetAllPlayers())
             {
@@ -60,7 +62,7 @@ namespace CringeGame
 
         private bool TryGetAllPlayers()
         {
-            return _players.Count == 4;
+            return _players.Count == 5;
         }
     }
 }

@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             role = new Label();
-            time = new Label();
+            timeLabel = new Label();
             listPlayers = new ListBox();
             round = new Label();
             firstCard = new Label();
@@ -37,6 +38,7 @@
             thirdCard = new Label();
             fourthCard = new Label();
             statementCard = new Label();
+            selectTimer = new System.Windows.Forms.Timer(components);
             SuspendLayout();
             // 
             // role
@@ -50,16 +52,16 @@
             role.TabIndex = 0;
             role.Text = "Судья";
             // 
-            // time
+            // timeLabel
             // 
-            time.AutoSize = true;
-            time.Font = new Font("Segoe UI", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            time.ForeColor = Color.White;
-            time.Location = new Point(910, 15);
-            time.Name = "time";
-            time.Size = new Size(109, 47);
-            time.TabIndex = 1;
-            time.Text = "20сек";
+            timeLabel.AutoSize = true;
+            timeLabel.Font = new Font("Segoe UI", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            timeLabel.ForeColor = Color.White;
+            timeLabel.Location = new Point(935, 12);
+            timeLabel.Name = "timeLabel";
+            timeLabel.Size = new Size(58, 47);
+            timeLabel.TabIndex = 1;
+            timeLabel.Text = "20";
             // 
             // listPlayers
             // 
@@ -86,43 +88,60 @@
             // 
             // firstCard
             // 
+            firstCard.Font = new Font("Segoe UI", 20F);
             firstCard.Image = Properties.Resources.answer_card;
             firstCard.Location = new Point(486, 646);
             firstCard.Name = "firstCard";
             firstCard.Size = new Size(217, 389);
             firstCard.TabIndex = 5;
+            firstCard.Text = "TestWord";
+            firstCard.Click += WinnerCard_Click;
             // 
             // secondCard
             // 
+            secondCard.Font = new Font("Segoe UI", 20F);
             secondCard.Image = Properties.Resources.answer_card;
             secondCard.Location = new Point(743, 646);
             secondCard.Name = "secondCard";
             secondCard.Size = new Size(217, 389);
             secondCard.TabIndex = 6;
+            secondCard.Click += WinnerCard_Click;
             // 
             // thirdCard
             // 
+            thirdCard.Font = new Font("Segoe UI", 20F);
             thirdCard.Image = Properties.Resources.answer_card;
             thirdCard.Location = new Point(997, 646);
             thirdCard.Name = "thirdCard";
             thirdCard.Size = new Size(217, 389);
             thirdCard.TabIndex = 7;
+            thirdCard.Click += WinnerCard_Click;
             // 
             // fourthCard
             // 
+            fourthCard.Font = new Font("Segoe UI", 20F);
             fourthCard.Image = Properties.Resources.answer_card;
             fourthCard.Location = new Point(1248, 646);
             fourthCard.Name = "fourthCard";
             fourthCard.Size = new Size(217, 389);
             fourthCard.TabIndex = 8;
+            fourthCard.Click += WinnerCard_Click;
             // 
             // statementCard
             // 
+            statementCard.Font = new Font("Segoe UI", 20F);
+            statementCard.ForeColor = SystemColors.ControlLight;
             statementCard.Image = Properties.Resources.statement_card;
             statementCard.Location = new Point(864, 179);
             statementCard.Name = "statementCard";
             statementCard.Size = new Size(209, 370);
             statementCard.TabIndex = 9;
+            statementCard.Text = "TestWord";
+            // 
+            // selectTimer
+            // 
+            selectTimer.Interval = 1000;
+            selectTimer.Tick += selectTimer_Tick;
             // 
             // ThirdStageJudgeForm
             // 
@@ -137,7 +156,7 @@
             Controls.Add(firstCard);
             Controls.Add(round);
             Controls.Add(listPlayers);
-            Controls.Add(time);
+            Controls.Add(timeLabel);
             Controls.Add(role);
             Name = "ThirdStageJudgeForm";
             Text = "ThirdStageJudge";
@@ -148,7 +167,7 @@
         #endregion
 
         private Label role;
-        private Label time;
+        private Label timeLabel;
         private ListBox listPlayers;
         private Label round;
         private Label firstCard;
@@ -156,5 +175,6 @@
         private Label thirdCard;
         private Label fourthCard;
         private Label statementCard;
+        private System.Windows.Forms.Timer selectTimer;
     }
 }

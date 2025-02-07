@@ -28,39 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             statementCard = new Label();
             answerCard = new Label();
-            time = new Label();
+            timeLabel = new Label();
             round = new Label();
-            winner = new Label();
+            winnerLabel = new Label();
+            selectTimer = new System.Windows.Forms.Timer(components);
             SuspendLayout();
             // 
             // statementCard
             // 
+            statementCard.Font = new Font("Segoe UI", 20F);
+            statementCard.ForeColor = SystemColors.ControlLight;
             statementCard.Image = Properties.Resources.statement_card;
             statementCard.Location = new Point(635, 193);
             statementCard.Name = "statementCard";
             statementCard.Size = new Size(207, 368);
             statementCard.TabIndex = 9;
+            statementCard.Text = "TestWord";
             // 
             // answerCard
             // 
+            answerCard.Font = new Font("Segoe UI", 20F);
             answerCard.Image = Properties.Resources.answer_card;
             answerCard.Location = new Point(1055, 193);
             answerCard.Name = "answerCard";
             answerCard.Size = new Size(215, 385);
             answerCard.TabIndex = 11;
+            answerCard.Text = "TestWord";
             // 
-            // time
+            // timeLabel
             // 
-            time.AutoSize = true;
-            time.Font = new Font("Segoe UI", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            time.ForeColor = Color.White;
-            time.Location = new Point(902, 13);
-            time.Name = "time";
-            time.Size = new Size(109, 47);
-            time.TabIndex = 1;
-            time.Text = "20сек";
+            timeLabel.AutoSize = true;
+            timeLabel.Font = new Font("Segoe UI", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            timeLabel.ForeColor = Color.White;
+            timeLabel.Location = new Point(902, 13);
+            timeLabel.Name = "timeLabel";
+            timeLabel.Size = new Size(58, 47);
+            timeLabel.TabIndex = 1;
+            timeLabel.Text = "20";
             // 
             // round
             // 
@@ -73,16 +80,21 @@
             round.TabIndex = 3;
             round.Text = "5/10";
             // 
-            // winner
+            // winnerLabel
             // 
-            winner.AutoSize = true;
-            winner.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            winner.ForeColor = Color.White;
-            winner.Location = new Point(774, 673);
-            winner.Name = "winner";
-            winner.Size = new Size(351, 47);
-            winner.TabIndex = 12;
-            winner.Text = "Победитель - (ник)";
+            winnerLabel.AutoSize = true;
+            winnerLabel.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            winnerLabel.ForeColor = Color.White;
+            winnerLabel.Location = new Point(774, 673);
+            winnerLabel.Name = "winnerLabel";
+            winnerLabel.Size = new Size(351, 47);
+            winnerLabel.TabIndex = 12;
+            winnerLabel.Text = "Победитель - (ник)";
+            // 
+            // selectTimer
+            // 
+            selectTimer.Interval = 1000;
+            selectTimer.Tick += selectTimer_Tick;
             // 
             // WinnerForm
             // 
@@ -90,11 +102,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             ClientSize = new Size(1920, 1061);
-            Controls.Add(winner);
+            Controls.Add(winnerLabel);
             Controls.Add(answerCard);
             Controls.Add(statementCard);
             Controls.Add(round);
-            Controls.Add(time);
+            Controls.Add(timeLabel);
             Name = "WinnerForm";
             Text = "Winner";
             ResumeLayout(false);
@@ -103,10 +115,11 @@
 
         #endregion
 
-        private Label time;
+        private Label timeLabel;
         private Label round;
         private Label statementCard;
         private Label answerCard;
-        private Label winner;
+        private Label winnerLabel;
+        private System.Windows.Forms.Timer selectTimer;
     }
 }

@@ -10,28 +10,33 @@ namespace CringeGame.Logic
     {
         // можно переделать с наследованием
         private readonly Player _player;
-        private readonly Card _selectedJudgeCard;
+        private readonly Judge _judge;
+        private Card _selectedJudgeCard;
         private readonly List<Card> _cards;
         private Card _selectedCard;
-
-        public Default(Player player, Card card)
+        public Default(Player player, Judge judge)
         {
             _player = player;
-            _selectedJudgeCard = card;
+            _judge = judge;
+
             _player.SetCards();
             _cards = _player.Cards;
-            Start();
+            //Start();
         }
 
         public Card SelectedCard { get { return _selectedCard; } }
+        public Card SelectedJudgeCard { get { return _judge.SelectedCard; } }
         public Player Player { get { return _player; } }
 
         private void Start()
         {
             //также привязать кнопку 
-            _selectedCard = ChooseCard(1);
+            //_selectedCard = ChooseCard(1);
         }
 
-        private Card ChooseCard(int numberCard) => _player.Cards[numberCard];
+        public void ChooseCard(int numberCard)
+        {
+            _selectedCard = _player.Cards[numberCard];
+        }
     }
 }

@@ -32,11 +32,13 @@ namespace CringeGame
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             role = new Label();
-            time = new Label();
+            timeLabel = new Label();
             listPlayers = new ListBox();
             round = new Label();
             waitJudge = new Label();
+            selectTimer = new System.Windows.Forms.Timer(components);
             SuspendLayout();
             // 
             // role
@@ -50,16 +52,16 @@ namespace CringeGame
             role.TabIndex = 0;
             role.Text = "Игрок";
             // 
-            // time
+            // timeLabel
             // 
-            time.AutoSize = true;
-            time.Font = new Font("Segoe UI", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            time.ForeColor = Color.White;
-            time.Location = new Point(902, 13);
-            time.Name = "time";
-            time.Size = new Size(109, 47);
-            time.TabIndex = 1;
-            time.Text = "20сек";
+            timeLabel.AutoSize = true;
+            timeLabel.Font = new Font("Segoe UI", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            timeLabel.ForeColor = Color.White;
+            timeLabel.Location = new Point(902, 13);
+            timeLabel.Name = "timeLabel";
+            timeLabel.Size = new Size(58, 47);
+            timeLabel.TabIndex = 1;
+            timeLabel.Text = "20";
             // 
             // listPlayers
             // 
@@ -95,6 +97,11 @@ namespace CringeGame
             waitJudge.TabIndex = 4;
             waitJudge.Text = "Ожидание решения судьи...";
             // 
+            // selectTimer
+            // 
+            selectTimer.Interval = 1000;
+            selectTimer.Tick += selectTimer_Tick;
+            // 
             // ThirdStagePlayerForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -104,7 +111,7 @@ namespace CringeGame
             Controls.Add(waitJudge);
             Controls.Add(round);
             Controls.Add(listPlayers);
-            Controls.Add(time);
+            Controls.Add(timeLabel);
             Controls.Add(role);
             Name = "ThirdStagePlayerForm";
             Text = "ThirdStagePlayer";
@@ -115,9 +122,10 @@ namespace CringeGame
         #endregion
 
         private Label role;
-        private Label time;
+        private Label timeLabel;
         private ListBox listPlayers;
         private Label round;
         private Label waitJudge;
+        private System.Windows.Forms.Timer selectTimer;
     }
 }

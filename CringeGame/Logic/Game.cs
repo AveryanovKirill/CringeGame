@@ -31,10 +31,6 @@ namespace CringeGame.Logic
             _currentPlayer = player;
         }
 
-        public Game()
-        {
-
-        }
 
         public void Start()
         {

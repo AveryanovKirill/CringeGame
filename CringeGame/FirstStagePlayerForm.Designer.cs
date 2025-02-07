@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             role = new Label();
-            time = new Label();
+            timeLabel = new Label();
             listPlayers = new ListBox();
             round = new Label();
             stackOfCards = new PictureBox();
@@ -37,6 +38,7 @@
             secondCard = new Label();
             thirdCard = new Label();
             fourthCard = new Label();
+            selectTimer = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)stackOfCards).BeginInit();
             SuspendLayout();
             // 
@@ -51,16 +53,16 @@
             role.TabIndex = 0;
             role.Text = "Игрок";
             // 
-            // time
+            // timeLabel
             // 
-            time.AutoSize = true;
-            time.Font = new Font("Segoe UI", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            time.ForeColor = Color.White;
-            time.Location = new Point(902, 13);
-            time.Name = "time";
-            time.Size = new Size(109, 47);
-            time.TabIndex = 1;
-            time.Text = "20сек";
+            timeLabel.AutoSize = true;
+            timeLabel.Font = new Font("Segoe UI", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            timeLabel.ForeColor = Color.White;
+            timeLabel.Location = new Point(942, 12);
+            timeLabel.Name = "timeLabel";
+            timeLabel.Size = new Size(58, 47);
+            timeLabel.TabIndex = 1;
+            timeLabel.Text = "20";
             // 
             // listPlayers
             // 
@@ -88,44 +90,53 @@
             // stackOfCards
             // 
             stackOfCards.Image = Properties.Resources.stack_cards_2_;
-            stackOfCards.Location = new Point(829, 150);
+            stackOfCards.Location = new Point(826, 154);
             stackOfCards.Name = "stackOfCards";
-            stackOfCards.Size = new Size(277, 426);
+            stackOfCards.Size = new Size(281, 430);
             stackOfCards.TabIndex = 4;
             stackOfCards.TabStop = false;
             stackOfCards.Click += stackOfCards_Click;
             // 
             // firstCard
             // 
+            firstCard.Font = new Font("Segoe UI", 20F);
             firstCard.Image = Properties.Resources.container_card;
-            firstCard.Location = new Point(508, 675);
+            firstCard.Location = new Point(508, 653);
             firstCard.Name = "firstCard";
-            firstCard.Size = new Size(207, 368);
+            firstCard.Size = new Size(215, 390);
             firstCard.TabIndex = 5;
             // 
             // secondCard
             // 
+            secondCard.Font = new Font("Segoe UI", 20F);
             secondCard.Image = Properties.Resources.container_card;
-            secondCard.Location = new Point(755, 675);
+            secondCard.Location = new Point(739, 653);
             secondCard.Name = "secondCard";
-            secondCard.Size = new Size(207, 368);
+            secondCard.Size = new Size(215, 390);
             secondCard.TabIndex = 6;
             // 
             // thirdCard
             // 
+            thirdCard.Font = new Font("Segoe UI", 20F);
             thirdCard.Image = Properties.Resources.container_card;
-            thirdCard.Location = new Point(999, 675);
+            thirdCard.Location = new Point(972, 653);
             thirdCard.Name = "thirdCard";
-            thirdCard.Size = new Size(207, 368);
+            thirdCard.Size = new Size(215, 390);
             thirdCard.TabIndex = 7;
             // 
             // fourthCard
             // 
+            fourthCard.Font = new Font("Segoe UI", 20F);
             fourthCard.Image = Properties.Resources.container_card;
-            fourthCard.Location = new Point(1237, 675);
+            fourthCard.Location = new Point(1212, 653);
             fourthCard.Name = "fourthCard";
-            fourthCard.Size = new Size(207, 368);
+            fourthCard.Size = new Size(215, 390);
             fourthCard.TabIndex = 8;
+            // 
+            // selectTimer
+            // 
+            selectTimer.Interval = 1000;
+            selectTimer.Tick += selectTimer_Tick;
             // 
             // FirstStagePlayerForm
             // 
@@ -140,7 +151,7 @@
             Controls.Add(stackOfCards);
             Controls.Add(round);
             Controls.Add(listPlayers);
-            Controls.Add(time);
+            Controls.Add(timeLabel);
             Controls.Add(role);
             Name = "FirstStagePlayerForm";
             Text = "FirstStagePlayer";
@@ -152,7 +163,7 @@
         #endregion
 
         private Label role;
-        private Label time;
+        private Label timeLabel;
         private ListBox listPlayers;
         private Label round;
         private PictureBox stackOfCards;
@@ -160,5 +171,6 @@
         private Label secondCard;
         private Label thirdCard;
         private Label fourthCard;
+        private System.Windows.Forms.Timer selectTimer;
     }
 }
