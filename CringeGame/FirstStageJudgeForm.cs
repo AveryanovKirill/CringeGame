@@ -46,10 +46,10 @@ namespace CringeGame
                 // statement_card замени на фото при нажатии
                 switch (label.Name)
                 {
-                    case "firstStatement": _judge.ChooseCard(0); firstStatement.Image = Properties.Resources.statement_card; break; // statement_card замени на фото при нажатии
-                    case "secondStatement": _judge.ChooseCard(1); secondStatement.Image = Properties.Resources.statement_card; break; // statement_card замени на фото при нажатии
-                    case "thirdStatement": _judge.ChooseCard(2); thirdStatement.Image = Properties.Resources.statement_card; break; // statement_card замени на фото при нажатии
-                    case "fourStatement": _judge.ChooseCard(3); fourStatement.Image = Properties.Resources.statement_card; break; // statement_card замени на фото при нажатии
+                    case "firstStatement": _judge.ChooseCard(0); firstStatement.Image = Properties.Resources.answer_card; break; // statement_card замени на фото при нажатии
+                    case "secondStatement": _judge.ChooseCard(1); secondStatement.Image = Properties.Resources.answer_card; break; // statement_card замени на фото при нажатии
+                    case "thirdStatement": _judge.ChooseCard(2); thirdStatement.Image = Properties.Resources.answer_card; break; // statement_card замени на фото при нажатии
+                    case "fourStatement": _judge.ChooseCard(3); fourStatement.Image = Properties.Resources.answer_card; break; // statement_card замени на фото при нажатии
                 }
             }
             //firstStatement.Enabled = false;
