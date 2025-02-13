@@ -1,5 +1,5 @@
 # CRINGEGAME 
-![cringe]([https://github.com/INF-ITIS-11309/games-averyanov_vinokurov/assets/144335211/d666d64a-56be-4653-bbdc-89ee616a6ab7](https://avatars.mds.yandex.net/get-mpic/4580278/img_id1936467671743499655.jpeg/orig))
+![cringe](https://avatars.mds.yandex.net/get-mpic/4580278/img_id1936467671743499655.jpeg/orig)
 
 [Cringe]([https://en.wikipedia.org/wiki/Arkanoid](https://hobbygames.ru/download/rules/krinzh-rules.pdf)) Cringe is a board card game that can be played in the company of friends or colleagues. Be careful with the answers, otherwise you'll become a cringe.
 
