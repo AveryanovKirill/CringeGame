@@ -3,6 +3,8 @@
     public enum XPacketType
     {
         Unknown,
-        Handshake
+        Handshake,
+        GameUpdate,    // новый тип для состояния игры
+        PlayerAction
     }
 }

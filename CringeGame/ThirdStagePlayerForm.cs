@@ -12,7 +12,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace CringeGame
 {
-    public partial class ThirdStagePlayerForm : Form
+    public partial class ThirdStagePlayerForm : Form, IGameStateUpdatable
     {
         private MainForm mainForm;
         private readonly Player _currentPlayer;
@@ -48,6 +48,25 @@ namespace CringeGame
                 time--;
             }
             else mainForm.PanelForm(new WinnerForm(mainForm));
+        }
+
+        public void UpdateGameState(CringeGameFullState state)
+        {
+            listPlayers.Items.Clear();
+            listRoles.Items.Clear();
+            foreach (var ps in state.Players)
+            {
+                listPlayers.Items.Add(ps.Name);
+                if (ps.Role == Role.Judge)
+                {
+                    listRoles.Items.Add("Судья");
+                }
+                else
+                {
+                    listRoles.Items.Add($"Игрок (Счёт: {ps.Score}, Ответ: {ps.SelectedCardIndex})");
+                }
+            }
+            //role.Text = _currentPlayer.Name + " " + _currentPlayer.Role;
         }
     }
 }

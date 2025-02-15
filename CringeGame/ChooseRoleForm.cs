@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace CringeGame
 {
-    public partial class ChooseRoleForm : Form
+    public partial class ChooseRoleForm : Form, IGameStateUpdatable
     {
         private MainForm mainForm;
         private readonly Player _currentPlayer;
@@ -27,7 +27,7 @@ namespace CringeGame
             mainForm = form;
             _game = form.Game;
             _currentPlayer = _game.CurrentPlayer;
-            _game.Start();
+            //_game.Start();
             _currentRound = _game.CurrentRound;
             _players = _game.GetPlayers();
             InitializeComponent();
@@ -39,7 +39,7 @@ namespace CringeGame
 
         private void ChooseForm()
         {
-            if (_currentPlayer != null && _currentPlayer.Role == Role.Judge)
+            if (_currentPlayer.Role == Role.Judge)
             {
                 mainForm.PanelForm(new FirstStageJudgeForm(mainForm));
             }
@@ -80,6 +80,11 @@ namespace CringeGame
                  ChooseForm();
             }
             ticks += 1;
+        }
+
+        public void UpdateGameState(CringeGameFullState state)
+        {
+            
         }
     }
 }

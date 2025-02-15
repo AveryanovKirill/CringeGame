@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace CringeGame
 {
-    public partial class WinnerForm : Form
+    public partial class WinnerForm : Form, IGameStateUpdatable
     {
         private MainForm mainForm;
         private readonly Player _currentPlayer;
@@ -40,6 +40,11 @@ namespace CringeGame
                 time--;
             }
             else mainForm.PanelForm(new ChooseRoleForm(mainForm));
+        }
+
+        public void UpdateGameState(CringeGameFullState state)
+        {
+            
         }
     }
 }

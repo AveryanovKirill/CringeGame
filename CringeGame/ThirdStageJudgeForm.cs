@@ -12,7 +12,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace CringeGame
 {
-    public partial class ThirdStageJudgeForm : Form
+    public partial class ThirdStageJudgeForm : Form, IGameStateUpdatable
     {
         private MainForm mainForm;
         private readonly Player _currentPlayer;
@@ -49,7 +49,18 @@ namespace CringeGame
             }
             else
             {
-                if (_judge.Winner == null) _judge.ChoosePlayerCard(0);
+                if (_judge.Winner == null)
+                {
+                    _judge.ChoosePlayerCard(0);
+                    // Отправляем действие "JudgeSelectWinner" с индексом 0 на сервер
+                    var action = new CringeGameActionPacket
+                    {
+                        ActionType = "JudgeSelectWinner",
+                        CardIndex = 0,
+                        Username = _currentPlayer.Name
+                    };
+                    mainForm.GetNetworkManager().SendPlayerAction(action);
+                }
                 mainForm.PanelForm(new WinnerForm(mainForm));
             }
         }
@@ -69,16 +80,41 @@ namespace CringeGame
             if (_judge.Winner == null)
             {
                 Label label = sender as Label;
-                // кейсах добавить смену фото
-                // statement_card замени на фото при нажатии
+                int chosenIndex = -1;
                 switch (label.Name)
                 {
-                    case "firstCard": _judge.ChoosePlayerCard(0); firstCard.Image = Properties.Resources.winner_card; break;
-                    case "secondCard": _judge.ChoosePlayerCard(1); secondCard.Image = Properties.Resources.winner_card; break;
-                    case "thirdCard": _judge.ChoosePlayerCard(2); thirdCard.Image = Properties.Resources.winner_card; break;
-                    case "fourthCard": _judge.ChoosePlayerCard(3); fourthCard.Image = Properties.Resources.winner_card; break;
+                    case "firstCard": _judge.ChoosePlayerCard(0); chosenIndex = 0; firstCard.Image = Properties.Resources.winner_card; break;
+                    case "secondCard": _judge.ChoosePlayerCard(1); chosenIndex = 1; secondCard.Image = Properties.Resources.winner_card; break;
+                    case "thirdCard": _judge.ChoosePlayerCard(2); chosenIndex = 2; thirdCard.Image = Properties.Resources.winner_card; break;
+                    case "fourthCard": _judge.ChoosePlayerCard(3); chosenIndex = 3; fourthCard.Image = Properties.Resources.winner_card; break;
+                }
+
+                if (chosenIndex != -1)
+                {
+                    _judge.ChoosePlayerCard(chosenIndex);
+                    // Отправляем действие "JudgeSelectWinner"
+                    var actionPacket = new CringeGameActionPacket
+                    {
+                        ActionType = "JudgeSelectWinner",
+                        CardIndex = chosenIndex,
+                        Username = _currentPlayer.Name
+                    };
+                    mainForm.GetNetworkManager().SendPlayerAction(actionPacket);
                 }
             }
+        }
+
+        public void UpdateGameState(CringeGameFullState state)
+        {
+            listPlayers.Items.Clear();
+            listRoles.Items.Clear();
+            foreach (var ps in state.Players)
+            {
+                listPlayers.Items.Add(ps.Name);
+                listRoles.Items.Add(ps.Role);
+            }
+
+            //role.Text = _currentPlayer.Name + " " + _currentPlayer.Role;
         }
     }
 }

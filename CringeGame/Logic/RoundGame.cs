@@ -15,14 +15,38 @@ namespace CringeGame.Logic
         private Player _selecetedJudgePlayer;
         private int _judgeNumber;
 
-        public RoundGame(List<Player> players, Player currentPlayer, int numberRound)
+        public RoundGame(List<Player> players, Player currentPlayer, int numberRound, bool resetRoles = true)
         {
             _players = players;
             _numberRound = numberRound;
             _currentPlayer = currentPlayer;
-            SetDefaultRole();
-            ChooseJudge();
+            if (resetRoles)
+            {
+                SetDefaultRole();
+                ChooseJudge();
+            }
+            else
+            {
+                // Если роли уже заданы, пытаемся найти судью
+                _selecetedJudgePlayer = _players.FirstOrDefault(p => p.Role == Role.Judge);
+                if (_selecetedJudgePlayer != null)
+                {
+                    _judge = new Judge(_selecetedJudgePlayer);
+                }
+                else
+                {
+                    // Если судья не найден, можно выбрать случайного
+                    ChooseJudge();
+                }
+            }
             Start();
+        }
+
+        public RoundGame(List<Player> players, int numberRound)
+        {
+            _players = players;
+            _numberRound = numberRound;
+            
         }
         public Player JudgePlayer { get { return _judge.Player; } }
         public int NumberRound { get { return _numberRound; } }
@@ -52,12 +76,7 @@ namespace CringeGame.Logic
         }
 
         // где то вызвать?
-        public (Judge Judge, Default Winner) Finish()
-        {
-            // в будущем убрать?
-            _judge.Finish();
-            return (_judge, _judge.Winner);
-        }
+
 
         private void SetDefaultRole()
         {
@@ -65,6 +84,11 @@ namespace CringeGame.Logic
             {
                 player.SetRole(Role.Default);
             }
+        }
+
+        public void SetJudge(Judge judge)
+        {
+            _judge = judge;
         }
     }
 }

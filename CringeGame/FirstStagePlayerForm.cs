@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace CringeGame
 {
-    public partial class FirstStagePlayerForm : Form
+    public partial class FirstStagePlayerForm : Form, IGameStateUpdatable
     {
         private MainForm mainForm;
         private readonly Player _currentPlayer;
@@ -67,6 +67,29 @@ namespace CringeGame
                 time--;
             }
             else mainForm.PanelForm(new SecondStagePlayerForm(mainForm));
+        }
+
+
+        public void UpdateGameState(CringeGameFullState state)
+        {
+            listPlayers.Items.Clear();
+            listRoles.Items.Clear();
+            foreach (var ps in state.Players)
+            {
+                listPlayers.Items.Add(ps.Name);
+                if (ps.Role == Role.Judge)
+                {
+                    listRoles.Items.Add("Судья");
+                }
+                else
+                {
+                    string playerStatus = $"Игрок (Счёт: {ps.Score}";
+                    playerStatus += ps.SelectedCardIndex >= 0 ? $", Карта: {ps.SelectedCardIndex}" : ", Карта не выбрана";
+                    playerStatus += ")";
+                    listRoles.Items.Add(playerStatus);
+                }
+            }
+            //role.Text = _currentPlayer.Name + " " + _currentPlayer.Role;
         }
     }
 }

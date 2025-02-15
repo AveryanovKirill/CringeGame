@@ -15,7 +15,7 @@ namespace TCPClient
             Console.ForegroundColor = ConsoleColor.White;
             
             var client = new XClient();
-            client.OnPacketRecieve += OnPacketRecieve;
+            client.OnPacketReceive += OnPacketReceive;
             client.Connect("127.0.0.1", 4910);
 
             var rand = new Random();
@@ -37,7 +37,7 @@ namespace TCPClient
             while(true) {}
         }
 
-        private static void OnPacketRecieve(byte[] packet)
+        private static void OnPacketReceive(byte[] packet)
         {
             var parsed = XPacket.Parse(packet);
 

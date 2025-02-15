@@ -8,10 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using XProtocol;
 
 namespace CringeGame
 {
-    public partial class PreparingForm : Form
+    public partial class PreparingForm : Form, IGameStateUpdatable
     {
         private MainForm mainForm;
         private Player _currentPlayer;
@@ -27,43 +28,60 @@ namespace CringeGame
 
         private void PreparingForm_Load(object sender, EventArgs e)
         {
-            var player = new Player("Игрок 1");
-            var player2 = new Player("Игрок 2");
-            var player3 = new Player("Игрок 3");
-            var player4 = new Player("Игрок 4");
-            _players.Add(player);
-            _players.Add(player2);
-            _players.Add(player3);
-            _players.Add(player4);
-
+            // Изначально отображаем локальное состояние (это может быть имитация)
             countPlayers.Text = $"{_players.Count}/5";
-
+            listPlayers.Items.Clear();
+            listStatus.Items.Clear();
             foreach (var user in _players)
             {
                 listPlayers.Items.Add(user.Name);
-                listStatus.Items.Add(user.Role); //Установить статус готовности игроков
+                listStatus.Items.Add(user.IsReady ? "Готов" : "Ожидание");
             }
         }
 
+        // Обработчик кнопки "Приготовиться"
         private void button1_Click(object sender, EventArgs e)
         {
-            var game = new Game(_players, _currentPlayer);
-            mainForm.SetGame(game);
-            mainForm.PanelForm(new ChooseRoleForm(mainForm));
+            _currentPlayer.IsReady = true;
+            // Отправляем на сервер действие "Ready"
+            var networkManager = mainForm.GetNetworkManager();
+            var readyAction = new CringeGameActionPacket { ActionType = "Ready", Username = mainForm.Game.CurrentPlayer.Name };
+            networkManager.SendPlayerAction(readyAction);
+            UpdateLocalStatus();
         }
 
-        private void CreateGame()
+        private void UpdateLocalStatus()
         {
-
-        }
-
-        private void ChooseForm()
-        {
-            if (_currentPlayer != null && _currentPlayer.Role == Role.Judge)
+            listStatus.Items.Clear();
+            foreach (var user in _players)
             {
-                mainForm.PanelForm(new FirstStageJudgeForm(mainForm));
+                listStatus.Items.Add(user.IsReady ? "Готов" : "Ожидание");
             }
-            else mainForm.PanelForm(new FirstStagePlayerForm(mainForm));
+        }
+
+        // Этот метод вызывается из MainForm при получении обновления состояния игры с сервера.
+        public void UpdateGameState(CringeGameFullState state)
+        {
+            Console.WriteLine($"[CLIENT] Received GameUpdate: {state.Players.Count} игроков");
+            foreach (var ps in state.Players)
+            {
+                Console.WriteLine($"[CLIENT] Игрок: {ps.Name}, готов: {ps.IsReady}");
+            }
+
+            listPlayers.Items.Clear();
+            listStatus.Items.Clear();
+            foreach (var ps in state.Players)
+            {
+                listPlayers.Items.Add(ps.Name);
+                listStatus.Items.Add(ps.IsReady ? "Готов" : "Ожидание");
+            }
+            countPlayers.Text = $"{state.Players.Count}/5";
+
+            // Если все игроки готовы, запускаем следующий этап
+            if (state.Players.Count == 5 && state.Players.All(p => p.IsReady))
+            {
+                mainForm.PanelForm(new ChooseRoleForm(mainForm));
+            }
         }
 
         private bool TryGetAllPlayers()

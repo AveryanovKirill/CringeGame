@@ -29,16 +29,24 @@ namespace CringeGame
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                if(inputNickName.Text != "")
+                if (!string.IsNullOrWhiteSpace(inputNickName.Text))
                 {
-                    var player = new Player($"{inputNickName.Text}");
-                    _players.Add(player);
-                    _currentPlayer = player;
-                    var game = new Game(_players, _currentPlayer);
+                    string username = inputNickName.Text.Trim();
+                    // Создаем локального игрока для этого клиента
+                    Player localPlayer = new Player(username);
+                    // Создаем игру, в которой текущий игрок – этот локальный игрок.
+                    var game = new Game(new List<Player> { localPlayer }, localPlayer);
                     mainForm.SetGame(game);
+                    // Сохраняем локальное имя в MainForm для дальнейшей идентификации
+                    mainForm.SetLocalUsername(username);
+                    // Отправляем handshake на сервер
+                    mainForm.GetNetworkManager().Connect("127.0.0.1", 4910, username);
                     mainForm.PanelForm(new PreparingForm(mainForm));
                 }
-                else MessageBox.Show("Введите данные!");
+                else
+                {
+                    MessageBox.Show("Введите имя!");
+                }
             }
         }
     }

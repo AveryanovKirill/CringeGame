@@ -6,12 +6,14 @@ namespace TCPServer
     {
         static void Main()
         {
-            Console.Title = "XServer";
+            Console.Title = "CringeGame Server";
             Console.ForegroundColor = ConsoleColor.White;
 
-            var server = new XServer();
+            var server = new CringeGameServer();
             server.Start();
-            server.AcceptClients();
+
+            Console.WriteLine("CringeGame Server запущен. Нажмите ENTER для выхода...");
+            Console.ReadLine();
         }
     }
 }

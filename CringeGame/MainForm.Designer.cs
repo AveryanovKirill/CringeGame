@@ -50,7 +50,6 @@ namespace CringeGame
             Controls.Add(panel);
             Name = "MainForm";
             Text = "Cringe";
-            WindowState = FormWindowState.Maximized;
             Load += MainForm_Load;
             ResumeLayout(false);
         }

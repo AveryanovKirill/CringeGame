@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace CringeGame
 {
-    public partial class SecondStageJudgeForm : Form
+    public partial class SecondStageJudgeForm : Form, IGameStateUpdatable
     {
         private MainForm mainForm;
         private readonly Player _currentPlayer;
@@ -47,5 +47,19 @@ namespace CringeGame
             }
             else mainForm.PanelForm(new ThirdStageJudgeForm(mainForm));
         }
+
+        public void UpdateGameState(CringeGameFullState state)
+        {
+            listPlayers.Items.Clear();
+            listRoles.Items.Clear();
+            foreach (var ps in state.Players)
+            {
+                listPlayers.Items.Add(ps.Name);
+                listRoles.Items.Add(ps.Role);
+            }
+
+            //role.Text = _currentPlayer.Name + " " + _currentPlayer.Role;
+        }
+
     }
 }

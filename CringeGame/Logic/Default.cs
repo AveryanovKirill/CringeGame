@@ -8,7 +8,6 @@ namespace CringeGame.Logic
 {
     public class Default
     {
-        // можно переделать с наследованием
         private readonly Player _player;
         private readonly Judge _judge;
         private Card _selectedJudgeCard;
@@ -18,25 +17,23 @@ namespace CringeGame.Logic
         {
             _player = player;
             _judge = judge;
-
-            _player.SetCards();
+            _selectedJudgeCard = judge.SelectedCard;
+            //_player.SetCards();
             _cards = _player.Cards;
-            //Start();
+            if(_player.SelectedCardIndex != -1)
+            {
+                ChooseCard(_player.SelectedCardIndex);
+            }
         }
 
         public Card SelectedCard { get { return _selectedCard; } }
         public Card SelectedJudgeCard { get { return _judge.SelectedCard; } }
         public Player Player { get { return _player; } }
 
-        private void Start()
-        {
-            //также привязать кнопку 
-            //_selectedCard = ChooseCard(1);
-        }
-
         public void ChooseCard(int numberCard)
         {
             _selectedCard = _player.Cards[numberCard];
+            _player.SelectedCardIndex = numberCard;
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace CringeGame.Logic
 {
@@ -13,12 +14,17 @@ namespace CringeGame.Logic
         private int _score = 0;
         private Role _role = Role.Default;
         private List<Card> _cards;
+        public bool IsReady { get; set; } = false;
 
         public Player(string name)
         {
             _name = name;
             _cards = new List<Card>();
         }
+
+
+        public int SelectedCardIndex { get; set; } = 1;
+        public int SelectedPlayerIndex { get; set; } = 1; 
 
         public int Score { get { return _score; } }
         public List<Card> Cards { get { return _cards; } }
@@ -27,6 +33,11 @@ namespace CringeGame.Logic
         public void AddScore()
         {
             _score += 1;
+        }
+
+        public void UpdateScore(int score)
+        {
+            _score = score;
         }
 
         private void ClearScore()
@@ -39,13 +50,18 @@ namespace CringeGame.Logic
             _role = role;
         }
 
-        public void SetCards()
+        public void SetCards(Card[] cards = null)
         {
+            if (cards != null)
+            {
+                _cards = cards.ToList();
+                return;
+            }
             if (_role == Role.Default)
             {
-                _cards = Card.GetRandomCards(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "config", "default_player_cards.json"));
+                _cards = Card.GetRandomCards(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", "CringeGame", "config", "default_player_cards.json"));
             }
-            else _cards = Card.GetRandomCards(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "config", "judge_cards.json"));
+            else _cards = Card.GetRandomCards(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", "CringeGame", "config", "judge_cards.json"));
         }
     }
 }

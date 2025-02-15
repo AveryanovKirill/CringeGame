@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace CringeGame
 {
-    public partial class FirstStageJudgeForm : Form
+    public partial class FirstStageJudgeForm : Form, IGameStateUpdatable
     {
         private MainForm mainForm;
         private readonly Player _currentPlayer;
@@ -53,19 +53,27 @@ namespace CringeGame
             if (_judge.SelectedCard == null)
             {
                 Label label = sender as Label;
-
+                int chosenIndex = -1;
                 switch (label.Name)
                 {
-                    case "firstStatement": _judge.ChooseCard(0); firstStatement.Image = Properties.Resources.statement_card_selected_; break;
-                    case "secondStatement": _judge.ChooseCard(1); secondStatement.Image = Properties.Resources.statement_card_selected_; break;
-                    case "thirdStatement": _judge.ChooseCard(2); thirdStatement.Image = Properties.Resources.statement_card_selected_; break;
-                    case "fourStatement": _judge.ChooseCard(3); fourStatement.Image = Properties.Resources.statement_card_selected_; break;
+                    case "firstStatement": _judge.ChooseCard(0); chosenIndex = 0; firstStatement.Image = Properties.Resources.statement_card_selected_; break;
+                    case "secondStatement": _judge.ChooseCard(1); chosenIndex = 1; secondStatement.Image = Properties.Resources.statement_card_selected_; break;
+                    case "thirdStatement": _judge.ChooseCard(2); chosenIndex = 2; thirdStatement.Image = Properties.Resources.statement_card_selected_; break;
+                    case "fourStatement": _judge.ChooseCard(3); chosenIndex = 3; fourStatement.Image = Properties.Resources.statement_card_selected_; break;
+                }
+                if (chosenIndex != -1)
+                {
+                    _judge.ChooseCard(chosenIndex);
+                    // Отправляем действие "JudgeApproval"
+                    var actionPacket = new CringeGameActionPacket
+                    {
+                        ActionType = "JudgeApproval",
+                        CardIndex = chosenIndex,
+                        Username = _currentPlayer.Name
+                    };
+                    mainForm.GetNetworkManager().SendPlayerAction(actionPacket);
                 }
             }
-            //firstStatement.Enabled = false;
-            //secondStatement.Enabled = false;
-            //thirdStatement.Enabled = false;
-            //fourStatement.Enabled = false;
         }
 
         private void selectTimer_Tick(object sender, EventArgs e)
@@ -77,7 +85,18 @@ namespace CringeGame
             }
             else
             {
-                if (_judge.SelectedCard == null) _judge.ChooseCard(0);
+                if (_judge.SelectedCard == null)
+                {
+                    _judge.ChooseCard(0);
+                    // Отправляем действие "JudgeApproval" с индексом 0 на сервер
+                    var action = new CringeGameActionPacket
+                    {
+                        ActionType = "JudgeApproval",
+                        CardIndex = 0,
+                        Username = _currentPlayer.Name
+                    };
+                    mainForm.GetNetworkManager().SendPlayerAction(action);
+                }
                 mainForm.PanelForm(new SecondStageJudgeForm(mainForm));
             }
         }
@@ -86,5 +105,19 @@ namespace CringeGame
         {
 
         }
+
+        public void UpdateGameState(CringeGameFullState state)
+        {
+            listPlayers.Items.Clear();
+            listRoles.Items.Clear();
+            foreach (var ps in state.Players)
+            {
+                listPlayers.Items.Add(ps.Name);
+                listRoles.Items.Add(ps.Role);
+            }
+            //role.Text = _currentPlayer.Name + " " + _currentPlayer.Role;
+            //SetCards();
+        }
+
     }
 }

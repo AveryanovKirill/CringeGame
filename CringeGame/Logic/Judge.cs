@@ -17,9 +17,12 @@ namespace CringeGame.Logic
         public Judge(Player player)
         {
             _player = player;
-            _player.SetCards();
+            //_player.SetCards();
             _cards = _player.Cards;
-            //Start();
+            if (_player.SelectedCardIndex != -1)
+            {
+                ChooseCard(_player.SelectedCardIndex);
+            }
         }
 
         public Card SelectedCard { get { return _selectedCard; } }
@@ -29,12 +32,6 @@ namespace CringeGame.Logic
         public List<Default> Defaults { get { return _defaultPlayers; } }
 
 
-        // вызывать в форме
-        public void Finish()
-        {
-            // к выбору привязать кнопку карты
-            //winner = ChoosePlayerCard(1);
-        }
 
         public void SetDefaultPlayers(List<Default> defaults)
         {
@@ -44,11 +41,12 @@ namespace CringeGame.Logic
         public void ChooseCard(int numberCard)
         {
             _selectedCard = _player.Cards[numberCard];
+            _player.SelectedCardIndex = numberCard;
         }
 
         public Default? GetDefault(Player player)
         {
-            return _defaultPlayers.Where(x => x.Player == player).FirstOrDefault();
+            return _defaultPlayers?.FirstOrDefault(x => x.Player.Name == player.Name);
         }
 
         public void SetDefaultPlayersCards()
@@ -59,6 +57,10 @@ namespace CringeGame.Logic
             }
         }
 
-        public void ChoosePlayerCard(int numberPlayerCard) => winner = _defaultPlayers[numberPlayerCard];
+        public void ChoosePlayerCard(int numberPlayerCard)
+        {
+            winner = _defaultPlayers[numberPlayerCard];
+            _player.SelectedPlayerIndex = numberPlayerCard;
+        }
     }
 }
